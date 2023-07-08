@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="style/style.css"/><link rel="stylesheet" href="style/modus-operandi.css"/></head><body><header role="banner"><h1>Method of rounding up with integers only</h1><p class="filetags">[Programming] </p><p></p></header><main role="main"><p>
+Always find it hard to recall instantly, hence the note.
+</p>
+
+<p>
+Let's consider the case where both integer A and B are positive integers:
+</p>
+
+<pre><code class="nil">A / B
+</code></pre>
+
+<p>
+If you want to make the result of the division above an integer with rounding up the decimal places, it can be realized as follows:
+</p>
+
+<pre><code class="nil">(A + (B-1)) / B
+</code></pre>
+
+<p>
+This allows for rounding up. (Of course, we're talking about languages/environment where division between integers is truncated, such as Java or C.)
+</p>
+
+<ul><li>If <code>A</code> is divisible by <code>B</code>, <code>B-1</code> gets truncated so it does not affect the original division result.</li>
+<li>If <code>A</code> is not divisible by <code>B</code>, adding <code>B-1</code> makes the number one more than the integer of the original division result.</li>
+</ul>
+</main><footer role="contentinfo"><div><a href="https://twitter.com/wakamenod">Twitter</a></div><div id="disqus_thread"/><script>
+    var disqus_config = function () {
+     // this.page.url = "/home/wtnbjn/Dropbox/Org/roam/blog/20230521115208-round_up.org";
+     this.page.identifier = "3c200267-e314-4770-a0fd-8a0e1979d8a0";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://awawawawa.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></footer></body></html>
