@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="style/style.css"/><link rel="stylesheet" href="style/modus-operandi.css"/></head><body><header role="banner"><h1>Personal Notes on AWS SSM Command</h1><p class="filetags">[AWS] </p><p></p></header><main role="main"><h2 id="Starting an interactive session"><a href="#Starting an interactive session">Starting an interactive session</a></h2><pre><code class="bash">aws ssm start-session --profile YOUR_PROFILE --target YOUR_INSTANCE_ID
+</code></pre>
+<p>
+This provides a similar experience to loggin via SSH.
+</p>
+
+
+<h2 id="Sending shell commands"><a href="#Sending shell commands">Sending shell commands</a></h2><pre><code class="bash">aws ssm send-command --profile YOUR_PROFILE --targets <span class="org-string">'[{"Key":"InstanceIds","Values":["YOUR_INSTANCE_ID"]}]'</span> --document-name <span class="org-string">"AWS-RunShellScript"</span> --document-version <span class="org-string">"1"</span> --parameters <span class="org-string">'{"commands":["pwd"]}'</span> --timeout-seconds 600 --max-concurrency <span class="org-string">"50"</span> --max-errors <span class="org-string">"0"</span>
+</code></pre>
+<p>
+In this case, it seems necessary to provide the <code>--targets</code> option in JSON format.
+The results of the command output cannot be seen directly, so if you want to check the results, note down the Command ID that comes back in the JSON after sending the command.
+</p>
+
+<p>
+<code>document-name</code>: This specifies the name of a Systems Manager Document. A Document is a set of scripts or commands that are used with Systems Manager capabilities, such as Run Command and State Manager. In this case, "AWS-RunShellScript" is one of the pre-built Documents provided by AWS, used for executing shell scripts.
+</p>
+
+<p>
+<code>document-version</code>: This specifies the version of the designated Document. A Document can have multiple versions, each of which may define a different set of scripts or commands. The "1" specified here refers to the first version.
+</p>
+
+<h2 id="Checking the results of shell commands"><a href="#Checking the results of shell commands">Checking the results of shell commands</a></h2><pre><code class="bash">aws ssm get-command-invocation --profile YOUR_PROFILE --command-id <span class="org-string">"YOUR_command_ID"</span> --instance-id YOUR_INSTANCE_ID
+</code></pre>
+
+<p>
+In this case, use <code>--instance-id</code> instead of <code>--target</code>&#x2026;
+</p>
+</main><footer role="contentinfo"><div><a href="https://twitter.com/wakamenod">Twitter</a></div><div id="disqus_thread"/><script>
+    var disqus_config = function () {
+     // this.page.url = "/home/wtnbjn/Dropbox/Org/roam/blog/20230524095444-ssm_command.org";
+     this.page.identifier = "1b3cc15f-3bab-4055-a699-6131aba6afaf";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://awawawawa.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></footer></body></html>

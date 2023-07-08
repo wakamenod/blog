@@ -1,0 +1,59 @@
+:root {
+	--color-background: #e3dada;
+	/* --color-text: #f5f5f5; */
+	/* --color-secondary: #eee; */
+	/* --color-shadow: #333; */
+	/* --color-link: #00bcff; */
+	/* --color-link-active: #79a8ff; */
+}
+
+body {
+    font-size: 150%;
+    margin: 0 auto;
+    padding: 0 1em;
+    max-width: 59rem;
+}
+
+pre {
+	overflow: auto;
+	scrollbar-color: lightgrey grey;
+	scrollbar-width: thin;
+	padding: 1em;
+	background-color: var(--color-background);
+	color: var(--color-text);
+}
+
+main p {
+    text-indent: 1em;
+}
+
+p.filetags {
+    text-align: left;
+    font-size: 70%;
+    color: #555555;
+}
+
+body > header {
+    padding: 0;
+}
+
+header > p {
+    margin: 0;
+    font-size: .9rem;
+    text-align: left;
+}
+
+body > footer {
+    padding: 0;
+}
+
+footer > div {
+    font-size: 1rem;
+    line-height: 2;
+    padding: 0;
+}
+
+a {
+    padding: 0.2ex 0.4ex;
+    text-decoration: none;
+}

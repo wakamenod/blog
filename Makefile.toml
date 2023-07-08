@@ -1,0 +1,20 @@
+[config]
+skip_core_tasks = true
+
+[tasks.clean]
+script = '''
+rm -rf public/* > /dev/null 2>&1
+'''
+
+[tasks.build]
+script = '''
+_sleepThenOpen() {
+  sleep 1
+  brave-browser http://localhost:8880
+}
+
+emacs -Q --script "./build.el"
+cd public
+_sleepThenOpen &
+python3 -m http.server 8880
+'''
