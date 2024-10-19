@@ -1,4 +1,4 @@
-name: Publish to GitHub Pages
+name: github pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  publish:
+  deploy:
     permissions:
       actions: write
       checks: write
@@ -20,12 +20,24 @@ jobs:
       statuses: write
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v4
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.135.0"
+          # extended: true
+
+      - name: Build
+        run: hugo
 
       - name: Publish generated content to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: public
+          clean: true
