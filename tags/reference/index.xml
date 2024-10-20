@@ -1,13 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWAWAWAWA – Docs</title>
-    <link>http://localhost:1313/docs/</link>
-    <description>Recent content in Docs on AWAWAWAWA</description>
+    <title>AWAWAWAWA – Reference</title>
+    <link>https://awawawa.wakamenod.com/tags/reference/</link>
+    <description>Recent content in Reference on AWAWAWAWA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Oct 2024 20:24:35 +0900</lastBuildDate>
     
-	  <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://awawawa.wakamenod.com/tags/reference/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +16,10 @@
     
     <item>
       <title>SKK</title>
-      <link>http://localhost:1313/docs/tools/20241020093445-skk/</link>
+      <link>https://awawawa.wakamenod.com/docs/tools/20241020093445-skk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/docs/tools/20241020093445-skk/</guid>
+      <guid>https://awawawa.wakamenod.com/docs/tools/20241020093445-skk/</guid>
       <description>
         
         
