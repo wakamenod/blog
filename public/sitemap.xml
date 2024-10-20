@@ -16,12 +16,20 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/tags/emacs/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/emacs/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/reference/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/tools/20241020093445-skk/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/emacs/20241020210719-tab_bar_mode/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/tools/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/tools/</loc>
   </url>
 </urlset>
