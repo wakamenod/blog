@@ -55,6 +55,10 @@ tab-bar-historyのコマンドもあるけど滅多に使わなそうなので�
 &lt;p&gt;org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
 アジェンダを閉じるとタブも閉じられる。
 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい&lt;/p&gt;
+&lt;h3&gt;参考&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;参考&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.rocktakey.com/information-science/2020-d99103ba-db6f-5424-3053-087c12ab74be/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tab-bar-modeを探検する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>
