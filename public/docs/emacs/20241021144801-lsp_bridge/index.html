@@ -11,24 +11,67 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>Emacs – AWAWAWAWA</title>
-  <meta name="description" content="" />
+  <title>lsp-bridge – AWAWAWAWA</title>
+  <meta name="description" content="lsp-breidge-refのカスタマイズ lsp-bridgeは C-c C-r で参照一覧をlsp-briedge-ref ウィンドウで表示するが、 一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。
+これは、 lsp-bridge-ref-kill-temp-buffer-p と lsp-bridge-ref-open-file-in-request-window の両方を nilにすることで解決する。 以下でlsp-bridge-refに関するcustomize変数をまとめる。
+設定名 初期値 説明 lsp-bridge-ref-delete-other-windows t refウィンドウを開くタイミングで、refを開始したウィンドウ以外のウィンドウを閉じるか lsp-bridge-ref-open-file-in-request-window nil refで参照先を移動する際に、refを開始したウィンドウをそのまま使用するか lsp-bridge-ref-kill-temp-buffer-p t refウィンドウから開いたバッファを保持せずに閉じるか lsp-bridge-ref-open-file-in-request-window をtにすると lsp-bridge-ref-kill-temp-buffer-p が無効になる気がする" />
 
   
-    <link rel="canonical" href="http://localhost:1313/docs/emacs/" itemprop="url" />
+    <link rel="canonical" href="http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/" itemprop="url" />
   
 
   
 
-<meta property="og:title" content="Emacs" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/docs/emacs/" />
+<meta property="og:title" content="lsp-bridge" />
+<meta property="og:description" content="lsp-breidge-refのカスタマイズ
+    lsp-bridgeは C-c C-r で参照一覧をlsp-briedge-ref ウィンドウで表示するが、
+一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。
+これは、 lsp-bridge-ref-kill-temp-buffer-p と lsp-bridge-ref-open-file-in-request-window の両方を nilにすることで解決する。
+以下でlsp-bridge-refに関するcustomize変数をまとめる。
 
   
-  <meta itemprop="name" content="Emacs">
+      
+          設定名
+          初期値
+          説明
+      
+  
+  
+      
+          lsp-bridge-ref-delete-other-windows
+          t
+          refウィンドウを開くタイミングで、refを開始したウィンドウ以外のウィンドウを閉じるか
+      
+      
+          lsp-bridge-ref-open-file-in-request-window
+          nil
+          refで参照先を移動する際に、refを開始したウィンドウをそのまま使用するか
+      
+      
+          lsp-bridge-ref-kill-temp-buffer-p
+          t
+          refウィンドウから開いたバッファを保持せずに閉じるか
+      
+  
+
+lsp-bridge-ref-open-file-in-request-window をtにすると lsp-bridge-ref-kill-temp-buffer-p が無効になる気がする" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/" /><meta property="article:section" content="docs" />
+
+
+
+  
+  <meta itemprop="name" content="lsp-bridge">
+  <meta itemprop="description" content="lsp-breidge-refのカスタマイズ lsp-bridgeは C-c C-r で参照一覧をlsp-briedge-ref ウィンドウで表示するが、 一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。
+これは、 lsp-bridge-ref-kill-temp-buffer-p と lsp-bridge-ref-open-file-in-request-window の両方を nilにすることで解決する。 以下でlsp-bridge-refに関するcustomize変数をまとめる。
+設定名 初期値 説明 lsp-bridge-ref-delete-other-windows t refウィンドウを開くタイミングで、refを開始したウィンドウ以外のウィンドウを閉じるか lsp-bridge-ref-open-file-in-request-window nil refで参照先を移動する際に、refを開始したウィンドウをそのまま使用するか lsp-bridge-ref-kill-temp-buffer-p t refウィンドウから開いたバッファを保持せずに閉じるか lsp-bridge-ref-open-file-in-request-window をtにすると lsp-bridge-ref-kill-temp-buffer-p が無効になる気がする">
+  <meta itemprop="wordCount" content="30">
+  <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Emacs">
+  <meta name="twitter:title" content="lsp-bridge">
+  <meta name="twitter:description" content="lsp-breidge-refのカスタマイズ lsp-bridgeは C-c C-r で参照一覧をlsp-briedge-ref ウィンドウで表示するが、 一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。
+これは、 lsp-bridge-ref-kill-temp-buffer-p と lsp-bridge-ref-open-file-in-request-window の両方を nilにすることで解決する。 以下でlsp-bridge-refに関するcustomize変数をまとめる。
+設定名 初期値 説明 lsp-bridge-ref-delete-other-windows t refウィンドウを開くタイミングで、refを開始したウィンドウ以外のウィンドウを閉じるか lsp-bridge-ref-open-file-in-request-window nil refで参照先を移動する際に、refを開始したウィンドウをそのまま使用するか lsp-bridge-ref-kill-temp-buffer-p t refウィンドウから開いたバッファを保持せずに閉じるか lsp-bridge-ref-open-file-in-request-window をtにすると lsp-bridge-ref-kill-temp-buffer-p が無効になる気がする">
 
     <link href="/css/compiled/main.css" rel="stylesheet" />
 
@@ -163,13 +206,12 @@
     </a><div class="ltr:hx-pr-0 hx-overflow-hidden">
         <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
     
   >Emacs
         <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx-h-[18px] hx-min-w-[18px] hx-rounded-sm hx-p-0.5 hover:hx-bg-gray-800/5 dark:hover:hx-bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx-origin-center hx-transition-transform rtl:-hx-rotate-180"></path></svg></span>
     </a>
-  
               <div class="ltr:hx-pr-0 hx-overflow-hidden">
         <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -179,13 +221,22 @@
   >gpg (GnuPG)
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/20241021144801-lsp_bridge/"
     
   >lsp-bridge
     </a>
+  
+    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
+              <a
+                href="#lsp-breidge-ref%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%82%a4%e3%82%ba"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >lsp-breidge-refのカスタマイズ</a>
+            </li>
+          </ul>
+  
               
             </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -250,7 +301,7 @@
         
           <li class="open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
     
   >Emacs
@@ -264,9 +315,9 @@
   >gpg (GnuPG)
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/20241021144801-lsp_bridge/"
     
   >lsp-bridge
@@ -325,8 +376,12 @@
 </div></div></aside>
     
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
-    <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4">
-      <div class=" hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
+    <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#lsp-breidge-ref%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%82%a4%e3%82%ba">lsp-breidge-refのカスタマイズ
+        </a>
+      </li></ul>
+      <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
         <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx-transition-all hx-duration-75 hx-opacity-0 hx-text-xs hx-font-medium hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-100 contrast-more:hx-text-gray-800 contrast-more:dark:hx-text-gray-50">
           <span>Scroll to top</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx-inline ltr:hx-ml-1 rtl:hx-mr-1 hx-h-3.5 hx-w-3.5 hx-border hx-rounded-full hx-border-gray-500 hover:hx-border-gray-900 dark:hx-border-gray-400 dark:hover:hx-border-gray-100 contrast-more:hx-border-gray-800 contrast-more:dark:hx-border-gray-50">
@@ -344,15 +399,58 @@
   <div class="hx-mt-1.5 hx-flex hx-items-center hx-gap-1 hx-overflow-hidden hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 contrast-more:hx-text-current">
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/">Docs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">Emacs</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
+          <a href="/docs/emacs/">Emacs</a>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">lsp-bridge</div>
   </div>
 
         <div class="content">
-          <h1>Emacs</h1>
-          
+          <h1>lsp-bridge</h1>
+          <h2>lsp-breidge-refのカスタマイズ<span class="hx-absolute -hx-mt-20" id="lsp-breidge-refのカスタマイズ"></span>
+    <a href="#lsp-breidge-ref%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%82%a4%e3%82%ba" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>lsp-bridgeは <code>C-c C-r</code> で参照一覧をlsp-briedge-ref ウィンドウで表示するが、
+一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。</p>
+<p>これは、 <code>lsp-bridge-ref-kill-temp-buffer-p</code> と <code>lsp-bridge-ref-open-file-in-request-window</code> の両方を nilにすることで解決する。
+以下でlsp-bridge-refに関するcustomize変数をまとめる。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">設定名</th>
+          <th style="text-align: left">初期値</th>
+          <th style="text-align: left">説明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">lsp-bridge-ref-delete-other-windows</td>
+          <td style="text-align: left">t</td>
+          <td style="text-align: left">refウィンドウを開くタイミングで、refを開始したウィンドウ以外のウィンドウを閉じるか</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lsp-bridge-ref-open-file-in-request-window</td>
+          <td style="text-align: left">nil</td>
+          <td style="text-align: left">refで参照先を移動する際に、refを開始したウィンドウをそのまま使用するか</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lsp-bridge-ref-kill-temp-buffer-p</td>
+          <td style="text-align: left">t</td>
+          <td style="text-align: left">refウィンドウから開いたバッファを保持せずに閉じるか</td>
+      </tr>
+  </tbody>
+</table>
+<p><code>lsp-bridge-ref-open-file-in-request-window</code> をtにすると <code>lsp-bridge-ref-kill-temp-buffer-p</code> が無効になる気がする</p>
+
         </div>
         <div class="hx-mt-16"></div>
-        
+        <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
+        href="/docs/emacs/20241022120540-gpg_gnupg/"
+        title="gpg (GnuPG)"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>gpg (GnuPG)</a><a
+        href="/docs/emacs/20241021104652-smartparens/"
+        title="smartparens"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
+      >smartparens<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
         
       </main>
     </article>

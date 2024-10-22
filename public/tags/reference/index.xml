@@ -15,6 +15,156 @@
     
     
     <item>
+      <title>gpg (GnuPG)</title>
+      <link>http://localhost:1313/docs/emacs/20241022120540-gpg_gnupg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/20241022120540-gpg_gnupg/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;秘匿情報をgpgファイルから取得する&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;秘匿情報をgpgファイルから取得する&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%a7%98%e5%8c%bf%e6%83%85%e5%a0%b1%e3%82%92gpg%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%8b%e3%82%89%e5%8f%96%e5%be%97%e3%81%99%e3%82%8b&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;init.el&lt;/code&gt; に直接書きたくない秘匿情報の扱いに困ることがたまにあって、
+gpgファイルについて調べた。よく分かってないこともあるが、以下で自分に必要な最低限のことはできる。
+※対象環境はMacOS&lt;/p&gt;
+&lt;h3&gt;インストール&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;インストール&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;pgp&lt;/code&gt; と &lt;code&gt;pinentry-mac&lt;/code&gt; をインストール&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;brew&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gnupg&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;brew&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pinentry-mac&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;p&gt;pinentry-macはパスフレーズを入力するためのUIで、
+PGPファイルをパスフレーズで暗号化するときに使用する。&lt;/p&gt;
+&lt;p&gt;インストールしたら、 &lt;code&gt;.bashrc&lt;/code&gt; で以下の環境変数を設定し、&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GPG_TTY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;tty&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;p&gt;さらに、pgp-agent.confでpinentry-programを指定する。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pinentry-program /opt/homebrew/bin/pinentry-mac&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; ~/.gnupg/gpg-agent.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;p&gt;gpgをインストールしただけだと、パスフレーズ入力のタイミングでエラーになるので注意&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Error while encrypting with &amp;ldquo;/opt/homebrew/bin/gpg&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;gpg: problem with the agent: Inappropriate ioctl for device
+gpg: error creating passphrase: Operation cancelled
+gpg: symmetric encryption of &amp;lsquo;[stdin]&amp;rsquo; failed: Operation cancelled&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;PGPファイルの作成&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;pgpファイルの作成&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#pgp%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%ae%e4%bd%9c%e6%88%90&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;~/.authinfo.gpg&lt;/code&gt; に以下の形式でgpgファイルを作成する。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;machine&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcal-client-id&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;login&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;your-client-id&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;password&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;123456789-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;machine&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcal-client-secret&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;login&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;your-client-secret&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;password&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ABCDEF-GhIjKlMnOpQrStUvWxYz&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;machine はサービスや識別子を指定する。 &lt;code&gt;elisp&lt;/code&gt; から &lt;code&gt;:host&lt;/code&gt; で指定する&lt;/li&gt;
+&lt;li&gt;login は本来ユーザー名らしいけど、今回は使わない&lt;/li&gt;
+&lt;li&gt;password の後に実際の値（クライアントIDやクライアントシークレット）を記述する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;elisp&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;elisp&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#elisp&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;elispからは &lt;code&gt;auth-source&lt;/code&gt; パッケージの &lt;code&gt;auth-source-pick-first-password&lt;/code&gt; を使って設定した &lt;code&gt;password&lt;/code&gt;
+の値を取得できる&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;auth-sources&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;~/.authinfo.gpg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcal-client-id&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;auth-source-pick-first-password&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:host&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;gcal-client-id&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gcal-client-secret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;auth-source-pick-first-password&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:host&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;gcal-client-secret&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;h3&gt;あとで読みたい&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;あとで読みたい&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e3%81%82%e3%81%a8%e3%81%a7%e8%aa%ad%e3%81%bf%e3%81%9f%e3%81%84&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Keeping Secrets in Emacs with GnuPG and Auth Sources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>lsp-bridge</title>
+      <link>http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;lsp-breidge-refのカスタマイズ&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;lsp-breidge-refのカスタマイズ&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lsp-breidge-ref%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%82%a4%e3%82%ba&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;lsp-bridgeは &lt;code&gt;C-c C-r&lt;/code&gt; で参照一覧をlsp-briedge-ref ウィンドウで表示するが、
+一覧を閉じるタイミングで、これまで参照から開いてたたバッファも全て消えてしまう。&lt;/p&gt;
+&lt;p&gt;これは、 &lt;code&gt;lsp-bridge-ref-kill-temp-buffer-p&lt;/code&gt; と &lt;code&gt;lsp-bridge-ref-open-file-in-request-window&lt;/code&gt; の両方を nilにすることで解決した。
+lsp-bridge-refに関するcustomize変数は以下:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;*&lt;/strong&gt; lsp-bridge-ref-delete-other-windows
+&lt;code&gt;t&lt;/code&gt; =&amp;gt; refウィンドウを開くタイミングでrefを開始したウィンドウ以外のウィンドウを閉じる&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;*&lt;/strong&gt; lsp-bridge-ref-open-file-in-request-window
+&lt;code&gt;t&lt;/code&gt; =&amp;gt; refでの移動にrefを開始したウィンドウをそのまま使用する&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;*&lt;/strong&gt; lsp-bridge-ref-kill-temp-buffer-p
+&lt;code&gt;t&lt;/code&gt; =&amp;gt; refウィンドウから開いたバッファを保持しない&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lsp-bridge-ref-open-file-in-request-window&lt;/code&gt; をtにすると &lt;code&gt;lsp-bridge-ref-kill-temp-buffer-p&lt;/code&gt; が無効になる気がする&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>SKK</title>
       <link>http://localhost:1313/docs/tools/20241020093445-skk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -62,6 +212,79 @@ AquaSKKの &lt;code&gt;環境設定&lt;/code&gt; より追加したルールを�
     </item>
     
     <item>
+      <title>smartparens</title>
+      <link>http://localhost:1313/docs/emacs/20241021104652-smartparens/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/20241021104652-smartparens/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;smartparens&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;smartparens&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#smartparens&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;s-c&lt;/code&gt; にhydraを用意した。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;leaf&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;*hydra-cursor&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;:doc&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Move cursor effectively&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;:bind&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;s-c&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;*hydra-cursor/body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;:after&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;smartparens&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;:pretty-hydra&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;:title&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;➤ Smart Cursor&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:color&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;blue&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:quit-key&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;q&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:foreign-keys&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;warn&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:separator&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;╌&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Sexp&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-beginning-of-sexp&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Begin&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;e&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-end-of-sexp&lt;/span&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;End&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;d&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-down-sexp&lt;/span&gt;          &lt;span class=&#34;s&#34;&gt;&amp;#34;Down&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;u&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-up-sexp&lt;/span&gt;            &lt;span class=&#34;s&#34;&gt;&amp;#34;Up&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;D&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-backward-down-sexp&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Down backward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;U&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-backward-up-sexp&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;&amp;#34;Up backward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-next-sexp&lt;/span&gt;          &lt;span class=&#34;s&#34;&gt;&amp;#34;Next&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;p&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-previous-sexp&lt;/span&gt;      &lt;span class=&#34;s&#34;&gt;&amp;#34;Previous&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;F&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-forward-sexp&lt;/span&gt;       &lt;span class=&#34;s&#34;&gt;&amp;#34;Forward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-backward-sexp&lt;/span&gt;      &lt;span class=&#34;s&#34;&gt;&amp;#34;Backward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s&#34;&gt;&amp;#34;Symbol&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;f&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-forward-symbol&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Forward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;b&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sp-backward-symbol&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Backward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s&#34;&gt;&amp;#34;Wrap&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;(&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;wrap-with-parens&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;&amp;#34;() parens&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;[&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;wrap-with-brackets&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;[] brackets&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;wrap-with-braces&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;&amp;#34;{} braces&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;wrap-with-single-quotes&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;&amp;#39; single quotes&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wrap-with-double-quotes&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;&amp;#34;\&amp;#34;\&amp;#34; double quotes&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s&#34;&gt;&amp;#34;Unwrap&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;,&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sp-backward-unwrap-sexp&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Backward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;k&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sp-kill-sexp&lt;/span&gt;            &lt;span class=&#34;s&#34;&gt;&amp;#34;Kill&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sp-forward-unwrap-sexp&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Forward&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s&#34;&gt;&amp;#34;Expand&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;+&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sp-forward-slurp-sexp&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Expand&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sp-forward-barf-sexp&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Shrink&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;:exit&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;p&gt;正直、カーソルの移動系はnativeとの違いが分からないのが多かった。
+以下は見たことがない動きなので使えるかも。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sp-next-sexp&lt;/code&gt; ( &lt;code&gt;C-M-n&lt;/code&gt; にもバインド)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sp-previous-sexp ( =C-M-p&lt;/code&gt; にもバインド)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;wrap-xxxは&lt;a href=&#34;https://joppot.info/posts/54f64c24-edb3-4e8b-9b64-da4a537ce4df&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;こちら&lt;/a&gt;の &lt;code&gt;defcustom&lt;/code&gt; を使わせて頂いた。 &lt;code&gt;C-SPC&lt;/code&gt; で選択した範囲を囲うのと併せて、使う機会は多そう。&lt;/p&gt;
+&lt;h3&gt;参考&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;参考&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://joppot.info/posts/54f64c24-edb3-4e8b-9b64-da4a537ce4df&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emacsの括弧機能を超絶強化するsmartparensとrainbow-delimiters&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>tab-bar-mode</title>
       <link>http://localhost:1313/docs/emacs/20241020210719-tab_bar_mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -72,7 +295,7 @@ AquaSKKの &lt;code&gt;環境設定&lt;/code&gt; より追加したルールを�
         
         &lt;h2&gt;tab-bar-mode&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;tab-bar-mode&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#tab-bar-mode&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 &lt;code&gt;tab-line-mode&lt;/code&gt;)。
-&lt;code&gt;tab-bar-mode&lt;/code&gt; はウィンドウ構成を1タブとして扱うものだった。便利。&lt;/p&gt;
+&lt;code&gt;tab-bar-mode&lt;/code&gt; はウィンドウ構成を1タブで管理する。便利。&lt;/p&gt;
 &lt;p&gt;使いそうなコマンド:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;C-x t 2&lt;/code&gt;: 新規タブ作成&lt;/li&gt;
@@ -99,9 +322,13 @@ tab-bar-historyのコマンドもあるけど滅多に使わなそうなので�
 
   
 &lt;/div&gt;
-&lt;p&gt;org-agendaを開くと、自動で新規タブが作られ、そこでアジェンダが表示される。
+&lt;p&gt;org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
 アジェンダを閉じるとタブも閉じられる。
-これで既存ウィンドウの構成を崩さずにフレームを目一杯使ってアジェンダを表示できる。&lt;/p&gt;
+既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい&lt;/p&gt;
+&lt;h3&gt;参考&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;参考&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.rocktakey.com/information-science/2020-d99103ba-db6f-5424-3053-087c12ab74be/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tab-bar-modeを探検する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>
