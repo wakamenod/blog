@@ -11,38 +11,55 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>tab-bar-mode – AWAWAWAWA</title>
-  <meta name="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+  <title>smartparens – AWAWAWAWA</title>
+  <meta name="description" content="smartparens s-c にhydraを用意した。
+(leaf *hydra-cursor :doc &#34;Move cursor effectively&#34; :bind (&#34;s-c&#34; . *hydra-cursor/body) :after smartparens :pretty-hydra ((:title &#34;➤ Smart Cursor&#34; :color blue :quit-key &#34;q&#34; :foreign-keys warn :separator &#34;╌&#34;) (&#34;Sexp&#34; ((&#34;a&#34; sp-beginning-of-sexp &#34;Begin&#34; :exit nil) (&#34;e&#34; sp-end-of-sexp &#34;End&#34; :exit nil) (&#34;d&#34; sp-down-sexp &#34;Down&#34; :exit nil) (&#34;u&#34; sp-up-sexp &#34;Up&#34; :exit nil) (&#34;D&#34; sp-backward-down-sexp &#34;Down backward&#34; :exit nil) (&#34;U&#34; sp-backward-up-sexp &#34;Up backward&#34; :exit nil) (&#34;n&#34; sp-next-sexp &#34;Next&#34; :exit nil) (&#34;p&#34; sp-previous-sexp &#34;Previous&#34; :exit nil) (&#34;F&#34; sp-forward-sexp &#34;Forward&#34; :exit nil) (&#34;B&#34; sp-backward-sexp &#34;Backward&#34; :exit nil)) &#34;Symbol&#34; ((&#34;f&#34; sp-forward-symbol &#34;Forward&#34; :exit nil) (&#34;b&#34; sp-backward-symbol &#34;Backward&#34; :exit nil)) &#34;Wrap&#34; ((&#34;(&#34; wrap-with-parens &#34;() parens&#34; :exit nil) (&#34;[&#34; wrap-with-brackets &#34;[] brackets&#34; :exit nil) (&#34;{&#34; wrap-with-braces &#34;{} braces&#34; :exit nil) (&#34;&#39;&#34; wrap-with-single-quotes &#34;&#39;&#39; single quotes&#34; :exit nil) (&#34;\&#34;&#34; wrap-with-double-quotes &#34;\&#34;\&#34; double quotes&#34; :exit nil)) &#34;Unwrap&#34; ((&#34;,&#34; sp-backward-unwrap-sexp &#34;Backward&#34; :exit nil) (&#34;k&#34; sp-kill-sexp &#34;Kill&#34; :exit nil) (&#34;.&#34; sp-forward-unwrap-sexp &#34;Forward&#34; :exit nil)) &#34;Expand&#34; ((&#34;&#43;&#34; sp-forward-slurp-sexp &#34;Expand&#34; :exit nil) (&#34;-&#34; sp-forward-barf-sexp &#34;Shrink&#34; :exit nil))))) 正直、カーソルの移動系はnativeとの違いが分からないのが多かった。 以下は見たことがない動きなので使えるかも。" />
 
   
-    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/emacs/20241020210719-tab_bar_mode/" itemprop="url" />
+    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/emacs/20241021104652-smartparens/" itemprop="url" />
   
 
   
 
-<meta property="og:title" content="tab-bar-mode" />
-<meta property="og:description" content="tab-bar-mode
-    ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。
-tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-
-C-x t 2: 新規タブ作成
-C-x t 0: 現在タブ削除
-C-x t o: タブ移動
-C-x t RET: タブ選択
-
-tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
+<meta property="og:title" content="smartparens" />
+<meta property="og:description" content="smartparens
+    s-c にhydraを用意した。
 
   
 
-(setq org-agenda-window-setup &#39;other-tab)
+(leaf *hydra-cursor
+  :doc &#34;Move cursor effectively&#34;
+  :bind (&#34;s-c&#34; . *hydra-cursor/body)
+  :after smartparens
+  :pretty-hydra
+  ((:title &#34;➤ Smart Cursor&#34; :color blue :quit-key &#34;q&#34; :foreign-keys warn :separator &#34;╌&#34;)
+   (&#34;Sexp&#34;
+    ((&#34;a&#34; sp-beginning-of-sexp  &#34;Begin&#34; :exit nil)
+     (&#34;e&#34; sp-end-of-sexp        &#34;End&#34; :exit nil)
+     (&#34;d&#34; sp-down-sexp          &#34;Down&#34; :exit nil)
+     (&#34;u&#34; sp-up-sexp            &#34;Up&#34; :exit nil)
+     (&#34;D&#34; sp-backward-down-sexp &#34;Down backward&#34; :exit nil)
+     (&#34;U&#34; sp-backward-up-sexp   &#34;Up backward&#34; :exit nil)
+     (&#34;n&#34; sp-next-sexp          &#34;Next&#34; :exit nil)
+     (&#34;p&#34; sp-previous-sexp      &#34;Previous&#34; :exit nil)
+     (&#34;F&#34; sp-forward-sexp       &#34;Forward&#34; :exit nil)
+     (&#34;B&#34; sp-backward-sexp      &#34;Backward&#34; :exit nil))
+    &#34;Symbol&#34;
+    ((&#34;f&#34; sp-forward-symbol  &#34;Forward&#34; :exit nil)
+     (&#34;b&#34; sp-backward-symbol &#34;Backward&#34; :exit nil))
+    &#34;Wrap&#34;
+    ((&#34;(&#34;  wrap-with-parens   &#34;() parens&#34; :exit nil)
+     (&#34;[&#34;  wrap-with-brackets &#34;[] brackets&#34; :exit nil)
+     (&#34;{&#34;  wrap-with-braces   &#34;{} braces&#34; :exit nil)
+     (&#34;&#39;&#34;  wrap-with-single-quotes   &#34;&#39;&#39; single quotes&#34; :exit nil)
+     (&#34;\&#34;&#34; wrap-with-double-quotes   &#34;\&#34;\&#34; double quotes&#34; :exit nil))
+    &#34;Unwrap&#34;
+    ((&#34;,&#34;  sp-backward-unwrap-sexp &#34;Backward&#34; :exit nil)
+     (&#34;k&#34;  sp-kill-sexp            &#34;Kill&#34; :exit nil)
+     (&#34;.&#34;  sp-forward-unwrap-sexp  &#34;Forward&#34; :exit nil))
+    &#34;Expand&#34;
+    ((&#34;&#43;&#34;  sp-forward-slurp-sexp &#34;Expand&#34; :exit nil)
+     (&#34;-&#34;  sp-forward-barf-sexp  &#34;Shrink&#34; :exit nil)))))
   
     
     
@@ -51,30 +68,23 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
 
   
 
-org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+正直、カーソルの移動系はnativeとの違いが分からないのが多かった。
+以下は見たことがない動きなので使えるかも。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://awawawa.wakamenod.com/docs/emacs/20241020210719-tab_bar_mode/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://awawawa.wakamenod.com/docs/emacs/20241021104652-smartparens/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="tab-bar-mode">
-  <meta itemprop="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
-  <meta itemprop="wordCount" content="42">
+  <meta itemprop="name" content="smartparens">
+  <meta itemprop="description" content="smartparens s-c にhydraを用意した。
+(leaf *hydra-cursor :doc &#34;Move cursor effectively&#34; :bind (&#34;s-c&#34; . *hydra-cursor/body) :after smartparens :pretty-hydra ((:title &#34;➤ Smart Cursor&#34; :color blue :quit-key &#34;q&#34; :foreign-keys warn :separator &#34;╌&#34;) (&#34;Sexp&#34; ((&#34;a&#34; sp-beginning-of-sexp &#34;Begin&#34; :exit nil) (&#34;e&#34; sp-end-of-sexp &#34;End&#34; :exit nil) (&#34;d&#34; sp-down-sexp &#34;Down&#34; :exit nil) (&#34;u&#34; sp-up-sexp &#34;Up&#34; :exit nil) (&#34;D&#34; sp-backward-down-sexp &#34;Down backward&#34; :exit nil) (&#34;U&#34; sp-backward-up-sexp &#34;Up backward&#34; :exit nil) (&#34;n&#34; sp-next-sexp &#34;Next&#34; :exit nil) (&#34;p&#34; sp-previous-sexp &#34;Previous&#34; :exit nil) (&#34;F&#34; sp-forward-sexp &#34;Forward&#34; :exit nil) (&#34;B&#34; sp-backward-sexp &#34;Backward&#34; :exit nil)) &#34;Symbol&#34; ((&#34;f&#34; sp-forward-symbol &#34;Forward&#34; :exit nil) (&#34;b&#34; sp-backward-symbol &#34;Backward&#34; :exit nil)) &#34;Wrap&#34; ((&#34;(&#34; wrap-with-parens &#34;() parens&#34; :exit nil) (&#34;[&#34; wrap-with-brackets &#34;[] brackets&#34; :exit nil) (&#34;{&#34; wrap-with-braces &#34;{} braces&#34; :exit nil) (&#34;&#39;&#34; wrap-with-single-quotes &#34;&#39;&#39; single quotes&#34; :exit nil) (&#34;\&#34;&#34; wrap-with-double-quotes &#34;\&#34;\&#34; double quotes&#34; :exit nil)) &#34;Unwrap&#34; ((&#34;,&#34; sp-backward-unwrap-sexp &#34;Backward&#34; :exit nil) (&#34;k&#34; sp-kill-sexp &#34;Kill&#34; :exit nil) (&#34;.&#34; sp-forward-unwrap-sexp &#34;Forward&#34; :exit nil)) &#34;Expand&#34; ((&#34;&#43;&#34; sp-forward-slurp-sexp &#34;Expand&#34; :exit nil) (&#34;-&#34; sp-forward-barf-sexp &#34;Shrink&#34; :exit nil))))) 正直、カーソルの移動系はnativeとの違いが分からないのが多かった。 以下は見たことがない動きなので使えるかも。">
+  <meta itemprop="wordCount" content="169">
   <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="tab-bar-mode">
-  <meta name="twitter:description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
+  <meta name="twitter:title" content="smartparens">
+  <meta name="twitter:description" content="smartparens s-c にhydraを用意した。
+(leaf *hydra-cursor :doc &#34;Move cursor effectively&#34; :bind (&#34;s-c&#34; . *hydra-cursor/body) :after smartparens :pretty-hydra ((:title &#34;➤ Smart Cursor&#34; :color blue :quit-key &#34;q&#34; :foreign-keys warn :separator &#34;╌&#34;) (&#34;Sexp&#34; ((&#34;a&#34; sp-beginning-of-sexp &#34;Begin&#34; :exit nil) (&#34;e&#34; sp-end-of-sexp &#34;End&#34; :exit nil) (&#34;d&#34; sp-down-sexp &#34;Down&#34; :exit nil) (&#34;u&#34; sp-up-sexp &#34;Up&#34; :exit nil) (&#34;D&#34; sp-backward-down-sexp &#34;Down backward&#34; :exit nil) (&#34;U&#34; sp-backward-up-sexp &#34;Up backward&#34; :exit nil) (&#34;n&#34; sp-next-sexp &#34;Next&#34; :exit nil) (&#34;p&#34; sp-previous-sexp &#34;Previous&#34; :exit nil) (&#34;F&#34; sp-forward-sexp &#34;Forward&#34; :exit nil) (&#34;B&#34; sp-backward-sexp &#34;Backward&#34; :exit nil)) &#34;Symbol&#34; ((&#34;f&#34; sp-forward-symbol &#34;Forward&#34; :exit nil) (&#34;b&#34; sp-backward-symbol &#34;Backward&#34; :exit nil)) &#34;Wrap&#34; ((&#34;(&#34; wrap-with-parens &#34;() parens&#34; :exit nil) (&#34;[&#34; wrap-with-brackets &#34;[] brackets&#34; :exit nil) (&#34;{&#34; wrap-with-braces &#34;{} braces&#34; :exit nil) (&#34;&#39;&#34; wrap-with-single-quotes &#34;&#39;&#39; single quotes&#34; :exit nil) (&#34;\&#34;&#34; wrap-with-double-quotes &#34;\&#34;\&#34; double quotes&#34; :exit nil)) &#34;Unwrap&#34; ((&#34;,&#34; sp-backward-unwrap-sexp &#34;Backward&#34; :exit nil) (&#34;k&#34; sp-kill-sexp &#34;Kill&#34; :exit nil) (&#34;.&#34; sp-forward-unwrap-sexp &#34;Forward&#34; :exit nil)) &#34;Expand&#34; ((&#34;&#43;&#34; sp-forward-slurp-sexp &#34;Expand&#34; :exit nil) (&#34;-&#34; sp-forward-barf-sexp &#34;Shrink&#34; :exit nil))))) 正直、カーソルの移動系はnativeとの違いが分からないのが多かった。 以下は見たことがない動きなので使えるかも。">
 
     <link rel="preload" href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" as="style" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
     <link href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" rel="stylesheet" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
@@ -235,17 +245,17 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >lsp-bridge
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/20241021104652-smartparens/"
     
   >smartparens
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/20241020210719-tab_bar_mode/"
     
   >tab-bar-mode
@@ -290,7 +300,7 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
     <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#tab-bar-mode">tab-bar-mode
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#smartparens">smartparens
         </a>
       </li>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
@@ -318,29 +328,49 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
         </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">tab-bar-mode</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">smartparens</div>
   </div>
 
         <div class="content">
-          <h1>tab-bar-mode</h1>
-          <h2>tab-bar-mode<span class="hx-absolute -hx-mt-20" id="tab-bar-mode"></span>
-    <a href="#tab-bar-mode" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 <code>tab-line-mode</code>)。
-<code>tab-bar-mode</code> はウィンドウ構成を1タブで管理する。便利。</p>
-<p>使いそうなコマンド:</p>
-<ul>
-<li><code>C-x t 2</code>: 新規タブ作成</li>
-<li><code>C-x t 0</code>: 現在タブ削除</li>
-<li><code>C-x t o</code>: タブ移動</li>
-<li><code>C-x t RET</code>: タブ選択</li>
-</ul>
-<p><code>tab-bar-history-mode</code> を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。</p>
-<p><code>tab-bar-mode</code> を使うと <code>org-agenda-window-setup</code> で <code>other-tab</code> のオプションが使えるようになる</p>
+          <h1>smartparens</h1>
+          <h2>smartparens<span class="hx-absolute -hx-mt-20" id="smartparens"></span>
+    <a href="#smartparens" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>s-c</code> にhydraを用意した。</p>
 <div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
   
 
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-window-setup</span> <span class="ss">&#39;other-tab</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">leaf</span> <span class="nv">*hydra-cursor</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:doc</span> <span class="s">&#34;Move cursor effectively&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="s">&#34;s-c&#34;</span> <span class="o">.</span> <span class="nv">*hydra-cursor/body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">smartparens</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:pretty-hydra</span>
+</span></span><span class="line"><span class="cl">  <span class="p">((</span><span class="nb">:title</span> <span class="s">&#34;➤ Smart Cursor&#34;</span> <span class="nb">:color</span> <span class="nv">blue</span> <span class="nb">:quit-key</span> <span class="s">&#34;q&#34;</span> <span class="nb">:foreign-keys</span> <span class="ne">warn</span> <span class="nb">:separator</span> <span class="s">&#34;╌&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;Sexp&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">((</span><span class="s">&#34;a&#34;</span> <span class="nv">sp-beginning-of-sexp</span>  <span class="s">&#34;Begin&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;e&#34;</span> <span class="nv">sp-end-of-sexp</span>        <span class="s">&#34;End&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;d&#34;</span> <span class="nv">sp-down-sexp</span>          <span class="s">&#34;Down&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;u&#34;</span> <span class="nv">sp-up-sexp</span>            <span class="s">&#34;Up&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;D&#34;</span> <span class="nv">sp-backward-down-sexp</span> <span class="s">&#34;Down backward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;U&#34;</span> <span class="nv">sp-backward-up-sexp</span>   <span class="s">&#34;Up backward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;n&#34;</span> <span class="nv">sp-next-sexp</span>          <span class="s">&#34;Next&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;p&#34;</span> <span class="nv">sp-previous-sexp</span>      <span class="s">&#34;Previous&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;F&#34;</span> <span class="nv">sp-forward-sexp</span>       <span class="s">&#34;Forward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;B&#34;</span> <span class="nv">sp-backward-sexp</span>      <span class="s">&#34;Backward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Symbol&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">((</span><span class="s">&#34;f&#34;</span> <span class="nv">sp-forward-symbol</span>  <span class="s">&#34;Forward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="nv">sp-backward-symbol</span> <span class="s">&#34;Backward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Wrap&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">((</span><span class="s">&#34;(&#34;</span>  <span class="nv">wrap-with-parens</span>   <span class="s">&#34;() parens&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;[&#34;</span>  <span class="nv">wrap-with-brackets</span> <span class="s">&#34;[] brackets&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;{&#34;</span>  <span class="nv">wrap-with-braces</span>   <span class="s">&#34;{} braces&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;&#39;&#34;</span>  <span class="nv">wrap-with-single-quotes</span>   <span class="s">&#34;&#39;&#39; single quotes&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;\&#34;&#34;</span> <span class="nv">wrap-with-double-quotes</span>   <span class="s">&#34;\&#34;\&#34; double quotes&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Unwrap&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">((</span><span class="s">&#34;,&#34;</span>  <span class="nv">sp-backward-unwrap-sexp</span> <span class="s">&#34;Backward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;k&#34;</span>  <span class="nv">sp-kill-sexp</span>            <span class="s">&#34;Kill&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;.&#34;</span>  <span class="nv">sp-forward-unwrap-sexp</span>  <span class="s">&#34;Forward&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Expand&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">((</span><span class="s">&#34;+&#34;</span>  <span class="nv">sp-forward-slurp-sexp</span> <span class="s">&#34;Expand&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;-&#34;</span>  <span class="nv">sp-forward-barf-sexp</span>  <span class="s">&#34;Shrink&#34;</span> <span class="nb">:exit</span> <span class="no">nil</span><span class="p">)))))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
   <button
     class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
     title="Copy code"
@@ -352,21 +382,29 @@ tab-bar-historyのコマンドもあるけど滅多に使わなそうなので�
 
   
 </div>
-<p>org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい</p>
+<p>正直、カーソルの移動系はnativeとの違いが分からないのが多かった。
+以下は見たことがない動きなので使えるかも。</p>
+<ul>
+<li><code>sp-next-sexp</code> ( <code>C-M-n</code> にもバインド)</li>
+<li><code>sp-previous-sexp ( =C-M-p</code> にもバインド)</li>
+</ul>
+<p>wrap-xxxは<a href="https://joppot.info/posts/54f64c24-edb3-4e8b-9b64-da4a537ce4df" target="_blank" rel="noopener">こちら</a>の <code>defcustom</code> を使わせて頂いた。 <code>C-SPC</code> で選択した範囲を囲うのと併せて、使う機会は多そう。</p>
 <h3>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
     <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
-<li><a href="https://blog.rocktakey.com/information-science/2020-d99103ba-db6f-5424-3053-087c12ab74be/" target="_blank" rel="noopener">tab-bar-modeを探検する</a></li>
+<li><a href="https://joppot.info/posts/54f64c24-edb3-4e8b-9b64-da4a537ce4df" target="_blank" rel="noopener">Emacsの括弧機能を超絶強化するsmartparensとrainbow-delimiters</a></li>
 </ul>
 
         </div>
         <div class="hx-mt-16"></div>
         <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/emacs/20241021104652-smartparens/"
-        title="smartparens"
+        href="/docs/emacs/20241021144801-lsp_bridge/"
+        title="lsp-bridge"
         class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>smartparens</a></div>
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>lsp-bridge</a><a
+        href="/docs/emacs/20241020210719-tab_bar_mode/"
+        title="tab-bar-mode"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
+      >tab-bar-mode<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
         
       </main>
     </article>
