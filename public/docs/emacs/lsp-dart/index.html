@@ -11,38 +11,49 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>tab-bar-mode – AWAWAWAWA</title>
-  <meta name="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+  <title>lsp-dart – AWAWAWAWA</title>
+  <meta name="description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
+以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
+(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。" />
 
   
-    <link rel="canonical" href="http://localhost:1313/docs/emacs/20241020210719-tab_bar_mode/" itemprop="url" />
+    <link rel="canonical" href="http://localhost:1313/docs/emacs/lsp-dart/" itemprop="url" />
   
 
   
 
-<meta property="og:title" content="tab-bar-mode" />
-<meta property="og:description" content="tab-bar-mode
-    ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。
-tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-
-C-x t 2: 新規タブ作成
-C-x t 0: 現在タブ削除
-C-x t o: タブ移動
-C-x t RET: タブ選択
-
-tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
+<meta property="og:title" content="lsp-dart" />
+<meta property="og:description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。
+前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず&hellip;
+以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
 
   
 
-(setq org-agenda-window-setup &#39;other-tab)
+(leaf dart-mode
+  :ensure t
+  :init
+  (require &#39;tree-sitter)
+  (require &#39;treesit)
+  (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode)
+  :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode)))
+(leaf lsp-dart
+  :ensure t
+  :config
+  (defun wal/find-dart-flutter-sdk-dir ()
+    &#34;Find the Dart Flutter SDK directory.&#34;
+    (when-let* ((flutter-bin (executable-find &#34;flutter&#34;))
+                (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;))))
+      sdk-dir))
+  (setq lsp-dart-test-tree-on-run nil)
+  (when (string= system-type &#34;gnu/linux&#34;)
+    (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir)))
+  (when (string= system-type &#34;darwin&#34;)
+    (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;))
+  (when (string= system-type &#34;windows-nt&#34;)
+    (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;))
+  :custom
+  (lsp-dart-test-tree-on-run . nil)
+  :hook (dart-mode-hook . lsp))
   
     
     
@@ -51,30 +62,24 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
 
   
 
-org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/emacs/20241020210719-tab_bar_mode/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/emacs/lsp-dart/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="tab-bar-mode">
-  <meta itemprop="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
-  <meta itemprop="wordCount" content="42">
+  <meta itemprop="name" content="lsp-dart">
+  <meta itemprop="description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
+以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
+(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。">
+  <meta itemprop="wordCount" content="97">
   <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="tab-bar-mode">
-  <meta name="twitter:description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
+  <meta name="twitter:title" content="lsp-dart">
+  <meta name="twitter:description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
+以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
+(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。">
 
     <link href="/css/compiled/main.css" rel="stylesheet" />
 
@@ -232,13 +237,14 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >lsp-bridge
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/lsp-dart/"
     
   >lsp-dart
     </a>
+  
               
             </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -248,22 +254,13 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >smartparens
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/20241020210719-tab_bar_mode/"
     
   >tab-bar-mode
     </a>
-  
-    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
-              <a
-                href="#tab-bar-mode"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >tab-bar-mode</a>
-            </li>
-          </ul>
-  
               
             </li></ul>
       </div>
@@ -282,14 +279,6 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
     href="/docs/tools/20241020093445-skk/"
     
   >SKK
-    </a>
-              
-            </li><li class="hx-flex hx-flex-col "><a
-    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
-    href="/docs/tools/20241016105646-%E8%87%AA%E4%BD%9C%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88/"
-    
-  >自作フォント
     </a>
               
             </li></ul>
@@ -342,9 +331,9 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >lsp-bridge
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/lsp-dart/"
     
   >lsp-dart
@@ -358,9 +347,9 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >smartparens
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/20241020210719-tab_bar_mode/"
     
   >tab-bar-mode
@@ -384,14 +373,6 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >SKK
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
-    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
-    href="/docs/tools/20241016105646-%E8%87%AA%E4%BD%9C%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88/"
-    
-  >自作フォント
-    </a>
-              
             </li></ul>
       </div></li>
         
@@ -411,16 +392,8 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
 </div></div></aside>
     
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
-    <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
-      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#tab-bar-mode">tab-bar-mode
-        </a>
-      </li>
-      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8f%82%e8%80%83">参考
-        </a>
-      </li></ul>
-      <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
+    <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4">
+      <div class=" hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
         <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx-transition-all hx-duration-75 hx-opacity-0 hx-text-xs hx-font-medium hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-100 contrast-more:hx-text-gray-800 contrast-more:dark:hx-text-gray-50">
           <span>Scroll to top</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx-inline ltr:hx-ml-1 rtl:hx-mr-1 hx-h-3.5 hx-w-3.5 hx-border hx-rounded-full hx-border-gray-500 hover:hx-border-gray-900 dark:hx-border-gray-400 dark:hover:hx-border-gray-100 contrast-more:hx-border-gray-800 contrast-more:dark:hx-border-gray-50">
@@ -441,29 +414,42 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
         </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">tab-bar-mode</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">lsp-dart</div>
   </div>
 
         <div class="content">
-          <h1>tab-bar-mode</h1>
-          <h2>tab-bar-mode<span class="hx-absolute -hx-mt-20" id="tab-bar-mode"></span>
-    <a href="#tab-bar-mode" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 <code>tab-line-mode</code>)。
-<code>tab-bar-mode</code> はウィンドウ構成を1タブで管理する。便利。</p>
-<p>使いそうなコマンド:</p>
-<ul>
-<li><code>C-x t 2</code>: 新規タブ作成</li>
-<li><code>C-x t 0</code>: 現在タブ削除</li>
-<li><code>C-x t o</code>: タブ移動</li>
-<li><code>C-x t RET</code>: タブ選択</li>
-</ul>
-<p><code>tab-bar-history-mode</code> を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。</p>
-<p><code>tab-bar-mode</code> を使うと <code>org-agenda-window-setup</code> で <code>other-tab</code> のオプションが使えるようになる</p>
+          <h1>lsp-dart</h1>
+          <p>久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。
+前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず&hellip;</p>
+<p>以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。</p>
 <div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
   
 
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-window-setup</span> <span class="ss">&#39;other-tab</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">leaf</span> <span class="n">dart</span><span class="o">-</span><span class="n">mode</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">ensure</span> <span class="n">t</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">require</span> <span class="s1">&#39;tree-sitter)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">require</span> <span class="s1">&#39;treesit)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">hook</span> <span class="s1">&#39;dart-mode-hook #&#39;</span><span class="n">tree</span><span class="o">-</span><span class="n">sitter</span><span class="o">-</span><span class="n">hl</span><span class="o">-</span><span class="n">mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">mode</span> <span class="p">((</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">.dart</span><span class="se">\\</span><span class="s2">&#39;&#34;</span> <span class="p">.</span> <span class="n">dart</span><span class="o">-</span><span class="n">mode</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">leaf</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">ensure</span> <span class="n">t</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">defun</span> <span class="n">wal</span><span class="o">/</span><span class="n">find</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Find the Dart Flutter SDK directory.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">when</span><span class="o">-</span><span class="n">let</span><span class="o">*</span> <span class="p">((</span><span class="n">flutter</span><span class="o">-</span><span class="n">bin</span> <span class="p">(</span><span class="n">executable</span><span class="o">-</span><span class="n">find</span> <span class="s2">&#34;flutter&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">trim</span> <span class="p">(</span><span class="n">shell</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">string</span> <span class="s2">&#34;flutter sdk-path&#34;</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sdk</span><span class="o">-</span><span class="n">dir</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">tree</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">run</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;gnu/linux&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">(</span><span class="n">wal</span><span class="o">/</span><span class="n">find</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;darwin&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="s2">&#34;~/flutter&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;windows-nt&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="s2">&#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">custom</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">tree</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">run</span> <span class="p">.</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">hook</span> <span class="p">(</span><span class="n">dart</span><span class="o">-</span><span class="n">mode</span><span class="o">-</span><span class="n">hook</span> <span class="p">.</span> <span class="n">lsp</span><span class="p">))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
   <button
     class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
     title="Copy code"
@@ -475,21 +461,41 @@ tab-bar-historyのコマンドもあるけど滅多に使わなそうなので�
 
   
 </div>
-<p>org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい</p>
-<h3>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
-    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
-<li><a href="https://blog.rocktakey.com/information-science/2020-d99103ba-db6f-5424-3053-087c12ab74be/" target="_blank" rel="noopener">tab-bar-modeを探検する</a></li>
-</ul>
+<p>以下のとおり、 <code>dart-mode</code> でtree-sitter-hl-modeをフックするようにした。</p>
+<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+  
+
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="nb">:init</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;treesit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;dart-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">:mode</span> <span class="p">((</span><span class="s">&#34;\\.dart\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">dart-mode</span><span class="p">)))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+  <button
+    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+    title="Copy code"
+  >
+    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
+    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
+  </button>
+</div>
+
+  
+</div>
+<p>こんなの前までやらなくてもハイライトされてたと思うんだけど、謎。</p>
+<p><a href="https://github.com/50ways2sayhard/dart-ts-mode" target="_blank" rel="noopener">dar-ts-mode</a> を用意してくれてる方がいて、セットアップすると <code>ts-mode</code> になるのでハイライトされるが、
+今度はlsp-dartでlspが起動しなくなってしまう。 多分、lsp-dartがまだdart-mode前提になってる。</p>
 
         </div>
         <div class="hx-mt-16"></div>
         <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
+        href="/docs/emacs/20241021144801-lsp_bridge/"
+        title="lsp-bridge"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>lsp-bridge</a><a
         href="/docs/emacs/20241021104652-smartparens/"
         title="smartparens"
-        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>smartparens</a></div>
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
+      >smartparens<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
         
       </main>
     </article>

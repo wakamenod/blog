@@ -24,6 +24,8 @@
   </url><url>
     <loc>http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/emacs/lsp-dart/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/reference/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/tools/20241020093445-skk/</loc>
@@ -37,5 +39,7 @@
     <loc>http://localhost:1313/tags/tools/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/tools/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/tools/20241016105646-%E8%87%AA%E4%BD%9C%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88/</loc>
   </url>
 </urlset>
