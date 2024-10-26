@@ -75,6 +75,69 @@
     </item>
     
     <item>
+      <title>Go開発向けパッケージ</title>
+      <link>http://localhost:1313/docs/emacs/go%E9%96%8B%E7%99%BA%E5%90%91%E3%81%91%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/go%E9%96%8B%E7%99%BA%E5%90%91%E3%81%91%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Go向けの知らないパッケージをいくつか見つけたので、忘れないようにまとめておく。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://github.com/brantou/emacs-go-tag&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-tag&lt;/a&gt;&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;go-tag&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#go-tag&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;M-x go-tag-add&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M-x go-tag-remove&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M-x go-tag-refresh&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;タグの記法（キャメルケースなど）の設定は以下で変更できる。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;go-tag-args&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;-transform&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;camelcase&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;h2&gt;&lt;a href=&#34;https://github.com/grafov/go-playground&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-playground&lt;/a&gt;&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;go-playground&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#go-playground&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;M-x go-playground&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Playground用のバッファが開くので、試したいコードをそのまま書き込む。
+&lt;code&gt;C-&amp;lt;return&amp;gt;&lt;/code&gt; でファイルを保存し、コードを実行できる。
+play.golang.org へのアップロード用コマンドもある。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://github.com/s-kostyaev/go-gen-test&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-gen-test&lt;/a&gt;&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;go-gen-test&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#go-gen-test&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;M-x go-gen-test-dwim&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;テストコードを自動生成する。プロジェクトによってテストの書き方が異なることが多いので、使用頻度は低いかもしれない。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://github.com/emacsorphanage/go-impl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-impl&lt;/a&gt;&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;go-impl&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#go-impl&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;M-x go-impl&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Interfaceを満たす構造体を定義する機能がある。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://github.com/samertm/go-stacktracer.el&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-stacktracer&lt;/a&gt;&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;go-stacktracer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#go-stacktracer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;M-x go-stacktracer-region&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Panicが発生した際、Stacktraceのログを選択して &lt;code&gt;M-x go-stacktracer-region&lt;/code&gt; を実行すると、新しいバッファが開き、
+そこからファイルにジャンプできるようになる。&lt;/p&gt;
+&lt;h2&gt;Other&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;other&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#other&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/elken/yasnippet-capf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;yasnippet-capf&lt;/a&gt; があったので追加した。&lt;a href=&#34;https://github.com/toumorokoshi/go-snippets&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;go-snippets&lt;/a&gt; のスニペットがcapeで補完されることを確認済み。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>gpg (GnuPG)</title>
       <link>http://localhost:1313/docs/emacs/20241022120540-gpg_gnupg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
