@@ -386,6 +386,80 @@ gpg: symmetric encryption of &amp;lsquo;[stdin]&amp;rsquo; failed: Operation can
     </item>
     
     <item>
+      <title>org-download</title>
+      <link>http://localhost:1313/docs/emacs/org-download/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/org-download/</guid>
+      <description>
+        
+        
+        &lt;p&gt;org-downloadの使い方について調べたのでメモ。
+downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;動作環境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;ドラッグ&amp;amp;ドロップ&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;ドラッグ-and-ドロップ&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e3%83%89%e3%83%a9%e3%83%83%e3%82%b0-and-%e3%83%89%e3%83%ad%e3%83%83%e3%83%97&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;まずドラッグ&amp;amp;ドロップだが、私の環境では正常に動作しない。
+Emacs29で本体に導入されたドラッグ&amp;amp;ドロップ機能と競合してるのが原因のようだ。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/abo-abo/org-download/issues/215&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Integration with emacs 29 and native drag and drop support #215&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;org-download-image-dir&lt;/code&gt; はorg-downloadでダウンロードした画像の保存先だが
+ドラッグ&amp;amp;ドロップ時にこれが使われず、カレントフォルダ内のdataフォルダに画像が保存された。&lt;/p&gt;
+&lt;h2&gt;コマンド&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;コマンド&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;org-download-image&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-image&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#org-download-image&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;org-download-image&lt;/code&gt; コマンドを実行すると、ミニバッファにURLした画像がダウンロードされ、
+orgにインライン画像がインサートされる。ダウンロードした画像の保存先は &lt;code&gt;org-download-image-dir&lt;/code&gt; 。&lt;/p&gt;
+&lt;h3&gt;org-download-clipboard&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-clipboard&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#org-download-clipboard&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;クリップボードにコピーした画像をorgのインライン画像として挿入する。
+このコマンドを使う場合、MacOSでは &lt;code&gt;pngpaste&lt;/code&gt; のインストールが必要。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install pngpaste&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+&lt;h3&gt;org-download-yank&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-yank&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#org-download-yank&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;kill-ringに保存したURL、もしくはファイルパスの画像をダウンロードしてインサートする。
+diredでファイルパスを取得するコマンドは &lt;code&gt;0 w&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;org-download-screenshot&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-screenshot&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#org-download-screenshot&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;実行するとスクショを取得するアプリケーションが起動する(OSのカーソルがスクショ範囲選択になる)。
+そこで取得したスクリーンショットがダウンロード&amp;amp;インサートされる。
+デフォルトではスクショを取るためのアプリケーションが &lt;code&gt;gnome-screenshot&lt;/code&gt; になってるので、MacOS用に
+設定する必要がある。&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+  
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;org-download-screenshot-method&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;screencapture -i %s&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+  
+&lt;/div&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Orgモードで数式をプレビューするためのLaTeX設定</title>
       <link>http://localhost:1313/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -398,7 +472,7 @@ gpg: symmetric encryption of &amp;lsquo;[stdin]&amp;rsquo; failed: Operation can
 &lt;p&gt;&amp;ldquo;Emacs&amp;rdquo;, &amp;ldquo;LaTeX&amp;rdquo;、で検索するとLaTeXで執筆するための解説記事が出てくるが、
 私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;対象環境はMacOS&lt;/li&gt;
+&lt;li&gt;対象環境: MacOS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;インストール&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;インストール&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;GUIなしのMacTeXをインストールするために、以下のコマンドを実行。&lt;/p&gt;
@@ -515,6 +589,55 @@ gpg: symmetric encryption of &amp;lsquo;[stdin]&amp;rsquo; failed: Operation can
 &lt;li&gt;&lt;a href=&#34;https://tam5917.hatenablog.com/entry/2021/03/30/202037#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EmacsにおけるLaTeX執筆環境構築（１）AUCTeXの設定と使い方について&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://note.com/9256/n/ne9cba9f6bcf5&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【見習いTeX使いのために】最初に覚えるコマンドまとめ&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>rustic-mode コマンド</title>
+      <link>http://localhost:1313/docs/emacs/rustic-mode-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/rustic-mode-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
+      <description>
+        
+        
+        &lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Command&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Key&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rustic-compile&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;C-c C-c C-u&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;cargo build&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rustic-cargo-doc&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;C-c C-c d&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;cargo doc&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rustic-cargo-check&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;C-c C-c C-k&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;cargo check&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rustic-cargo-run&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;C-c C-n, C-c C-c C-r&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;cargo run&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;rustic-cargo-add&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;C-c C-c a&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;cargo add&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
       </description>
     </item>

@@ -11,81 +11,52 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>Orgモードで数式をプレビューするためのLaTeX設定 – AWAWAWAWA</title>
-  <meta name="description" content="Emacsで数式をプレビューするためのLaTeX環境を構築した。
-“Emacs”, “LaTeX”、で検索するとLaTeXで執筆するための解説記事が出てくるが、 私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。
-対象環境: MacOS インストール GUIなしのMacTeXをインストールするために、以下のコマンドを実行。
-brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下の設定を追加した。
-(leaf auctex :ensure t :hook (TeX-mode-hook . LaTeX-math-mode) (TeX-mode-hook . auto-image-file-mode) :init (setq org-preview-latex-default-process &#39;dvipng) (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)) :config (leaf latex-math-preview :ensure t :after auctex :config (setq latex-math-preview-in-math-mode-p-func &#39;latex-math-preview-in-math-mode-p latex-math-preview-tex-to-png-for-preview &#39;(platex dvipng) latex-math-preview-tex-to-png-for-save &#39;(platex dvipng) latex-math-preview-tex-to-eps-for-save &#39;(platex dvips-to-eps) latex-math-preview-beamer-to-png &#39;(platex dvipdfmx gs-to-png))) (leaf company-math :ensure t :hook (TeX-mode-hook . company-math-mode-setup) :config (defun company-math-mode-setup () (require &#39;company-math) (setq-local company-backends (append &#39;((company-math-symbols-latex company-latex-commands)) company-backends)))) ;; インラインプレビューの高速化 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-image-type &#39;dvipng))) ;; インラインプレビューの文字化け回避 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-default-option-list &#39;(&#34;displaymath&#34; &#34;floats&#34; &#34;graphics&#34; &#34;textmath&#34; &#34;footnotes&#34;))))) この設定で、OrgファイルにLaTeX形式で数式を書いたら、 C-c C-x C-l でプレビューできるようになった。 デフォルトではプレビュー文字が小さかったため、以下の設定で文字サイズを大きくしている。" />
+  <title>org-download – AWAWAWAWA</title>
+  <meta name="description" content="org-downloadの使い方について調べたのでメモ。 downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。
+動作環境 GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16
+ドラッグ&amp;ドロップ まずドラッグ&amp;ドロップだが、私の環境では正常に動作しない。 Emacs29で本体に導入されたドラッグ&amp;ドロップ機能と競合してるのが原因のようだ。
+Integration with emacs 29 and native drag and drop support #215 org-download-image-dir はorg-downloadでダウンロードした画像の保存先として指定されているが、 ドラッグ&amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。 あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。
+コマンド 以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。 画像の保存先は org-download-image-dir で指定したフォルダになる。
+org-download-image このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。
+org-download-clipboard クリップボードにコピーした画像を挿入する。 このコマンドを使う場合、MacOSでは pngpaste のインストールが必要となる。
+brew install pngpaste org-download-yank kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。 Diredでファイルパスを取得するには、 0 w コマンドを使用する。" />
 
   
-    <link rel="canonical" href="http://localhost:1313/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/" itemprop="url" />
+    <link rel="canonical" href="http://localhost:1313/docs/emacs/org-download/" itemprop="url" />
   
-
-  
-
-<meta property="og:title" content="Orgモードで数式をプレビューするためのLaTeX設定" />
-<meta property="og:description" content="Emacsで数式をプレビューするためのLaTeX環境を構築した。
-&ldquo;Emacs&rdquo;, &ldquo;LaTeX&rdquo;、で検索するとLaTeXで執筆するための解説記事が出てくるが、
-私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。
-
-対象環境: MacOS
-
-インストール
-    GUIなしのMacTeXをインストールするために、以下のコマンドを実行。
 
   
 
-brew install --cask mactex-no-gui
+<meta property="og:title" content="org-download" />
+<meta property="og:description" content="org-downloadの使い方について調べたのでメモ。
+downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。
+
+動作環境
+
+
+GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16
+
+ドラッグ&amp;ドロップ
+    まずドラッグ&amp;ドロップだが、私の環境では正常に動作しない。
+Emacs29で本体に導入されたドラッグ&amp;ドロップ機能と競合してるのが原因のようだ。
+
+Integration with emacs 29 and native drag and drop support #215
+
+org-download-image-dir はorg-downloadでダウンロードした画像の保存先として指定されているが、
+ドラッグ&amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。
+あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。
+コマンド
+    以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。
+画像の保存先は org-download-image-dir で指定したフォルダになる。
+org-download-image
+    このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。
+org-download-clipboard
+    クリップボードにコピーした画像を挿入する。
+このコマンドを使う場合、MacOSでは pngpaste のインストールが必要となる。
+
   
-    
-    
-  
 
-
-  
-
-Elisp
-    AUCTeXをインストールし、以下の設定を追加した。
-
-  
-
-(leaf auctex
-  :ensure t
-  :hook
-  (TeX-mode-hook . LaTeX-math-mode)
-  (TeX-mode-hook . auto-image-file-mode)
-  :init
-  (setq org-preview-latex-default-process &#39;dvipng)
-  (setq org-format-latex-options
-        (plist-put org-format-latex-options :scale 1.5))
-  :config
-  (leaf latex-math-preview
-    :ensure t
-    :after auctex
-    :config
-    (setq latex-math-preview-in-math-mode-p-func &#39;latex-math-preview-in-math-mode-p
-          latex-math-preview-tex-to-png-for-preview &#39;(platex dvipng)
-          latex-math-preview-tex-to-png-for-save &#39;(platex dvipng)
-          latex-math-preview-tex-to-eps-for-save &#39;(platex dvips-to-eps)
-          latex-math-preview-beamer-to-png &#39;(platex dvipdfmx gs-to-png)))
-
-  (leaf company-math
-    :ensure t
-    :hook (TeX-mode-hook . company-math-mode-setup)
-    :config
-    (defun company-math-mode-setup ()
-      (require &#39;company-math)
-      (setq-local company-backends
-                  (append &#39;((company-math-symbols-latex company-latex-commands))
-                          company-backends))))
-  ;; インラインプレビューの高速化
-  (add-hook &#39;TeX-mode-hook (lambda () (setq preview-image-type &#39;dvipng)))
-  ;; インラインプレビューの文字化け回避
-  (add-hook &#39;TeX-mode-hook
-            (lambda ()
-              (setq preview-default-option-list
-                    &#39;(&#34;displaymath&#34; &#34;floats&#34; &#34;graphics&#34; &#34;textmath&#34; &#34;footnotes&#34;)))))
+brew install pngpaste
   
     
     
@@ -94,29 +65,36 @@ Elisp
 
   
 
-この設定で、OrgファイルにLaTeX形式で数式を書いたら、 C-c C-x C-l でプレビューできるようになった。
-デフォルトではプレビュー文字が小さかったため、以下の設定で文字サイズを大きくしている。" />
+org-download-yank
+    kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。
+Diredでファイルパスを取得するには、 0 w コマンドを使用する。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/emacs/org-download/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="Orgモードで数式をプレビューするためのLaTeX設定">
-  <meta itemprop="description" content="Emacsで数式をプレビューするためのLaTeX環境を構築した。
-“Emacs”, “LaTeX”、で検索するとLaTeXで執筆するための解説記事が出てくるが、 私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。
-対象環境: MacOS インストール GUIなしのMacTeXをインストールするために、以下のコマンドを実行。
-brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下の設定を追加した。
-(leaf auctex :ensure t :hook (TeX-mode-hook . LaTeX-math-mode) (TeX-mode-hook . auto-image-file-mode) :init (setq org-preview-latex-default-process &#39;dvipng) (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)) :config (leaf latex-math-preview :ensure t :after auctex :config (setq latex-math-preview-in-math-mode-p-func &#39;latex-math-preview-in-math-mode-p latex-math-preview-tex-to-png-for-preview &#39;(platex dvipng) latex-math-preview-tex-to-png-for-save &#39;(platex dvipng) latex-math-preview-tex-to-eps-for-save &#39;(platex dvips-to-eps) latex-math-preview-beamer-to-png &#39;(platex dvipdfmx gs-to-png))) (leaf company-math :ensure t :hook (TeX-mode-hook . company-math-mode-setup) :config (defun company-math-mode-setup () (require &#39;company-math) (setq-local company-backends (append &#39;((company-math-symbols-latex company-latex-commands)) company-backends)))) ;; インラインプレビューの高速化 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-image-type &#39;dvipng))) ;; インラインプレビューの文字化け回避 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-default-option-list &#39;(&#34;displaymath&#34; &#34;floats&#34; &#34;graphics&#34; &#34;textmath&#34; &#34;footnotes&#34;))))) この設定で、OrgファイルにLaTeX形式で数式を書いたら、 C-c C-x C-l でプレビューできるようになった。 デフォルトではプレビュー文字が小さかったため、以下の設定で文字サイズを大きくしている。">
-  <meta itemprop="wordCount" content="137">
+  <meta itemprop="name" content="org-download">
+  <meta itemprop="description" content="org-downloadの使い方について調べたのでメモ。 downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。
+動作環境 GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16
+ドラッグ&amp;ドロップ まずドラッグ&amp;ドロップだが、私の環境では正常に動作しない。 Emacs29で本体に導入されたドラッグ&amp;ドロップ機能と競合してるのが原因のようだ。
+Integration with emacs 29 and native drag and drop support #215 org-download-image-dir はorg-downloadでダウンロードした画像の保存先として指定されているが、 ドラッグ&amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。 あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。
+コマンド 以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。 画像の保存先は org-download-image-dir で指定したフォルダになる。
+org-download-image このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。
+org-download-clipboard クリップボードにコピーした画像を挿入する。 このコマンドを使う場合、MacOSでは pngpaste のインストールが必要となる。
+brew install pngpaste org-download-yank kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。 Diredでファイルパスを取得するには、 0 w コマンドを使用する。">
+  <meta itemprop="wordCount" content="69">
   <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Orgモードで数式をプレビューするためのLaTeX設定">
-  <meta name="twitter:description" content="Emacsで数式をプレビューするためのLaTeX環境を構築した。
-“Emacs”, “LaTeX”、で検索するとLaTeXで執筆するための解説記事が出てくるが、 私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。
-対象環境: MacOS インストール GUIなしのMacTeXをインストールするために、以下のコマンドを実行。
-brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下の設定を追加した。
-(leaf auctex :ensure t :hook (TeX-mode-hook . LaTeX-math-mode) (TeX-mode-hook . auto-image-file-mode) :init (setq org-preview-latex-default-process &#39;dvipng) (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)) :config (leaf latex-math-preview :ensure t :after auctex :config (setq latex-math-preview-in-math-mode-p-func &#39;latex-math-preview-in-math-mode-p latex-math-preview-tex-to-png-for-preview &#39;(platex dvipng) latex-math-preview-tex-to-png-for-save &#39;(platex dvipng) latex-math-preview-tex-to-eps-for-save &#39;(platex dvips-to-eps) latex-math-preview-beamer-to-png &#39;(platex dvipdfmx gs-to-png))) (leaf company-math :ensure t :hook (TeX-mode-hook . company-math-mode-setup) :config (defun company-math-mode-setup () (require &#39;company-math) (setq-local company-backends (append &#39;((company-math-symbols-latex company-latex-commands)) company-backends)))) ;; インラインプレビューの高速化 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-image-type &#39;dvipng))) ;; インラインプレビューの文字化け回避 (add-hook &#39;TeX-mode-hook (lambda () (setq preview-default-option-list &#39;(&#34;displaymath&#34; &#34;floats&#34; &#34;graphics&#34; &#34;textmath&#34; &#34;footnotes&#34;))))) この設定で、OrgファイルにLaTeX形式で数式を書いたら、 C-c C-x C-l でプレビューできるようになった。 デフォルトではプレビュー文字が小さかったため、以下の設定で文字サイズを大きくしている。">
+  <meta name="twitter:title" content="org-download">
+  <meta name="twitter:description" content="org-downloadの使い方について調べたのでメモ。 downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。
+動作環境 GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16
+ドラッグ&amp;ドロップ まずドラッグ&amp;ドロップだが、私の環境では正常に動作しない。 Emacs29で本体に導入されたドラッグ&amp;ドロップ機能と競合してるのが原因のようだ。
+Integration with emacs 29 and native drag and drop support #215 org-download-image-dir はorg-downloadでダウンロードした画像の保存先として指定されているが、 ドラッグ&amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。 あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。
+コマンド 以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。 画像の保存先は org-download-image-dir で指定したフォルダになる。
+org-download-image このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。
+org-download-clipboard クリップボードにコピーした画像を挿入する。 このコマンドを使う場合、MacOSでは pngpaste のインストールが必要となる。
+brew install pngpaste org-download-yank kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。 Diredでファイルパスを取得するには、 0 w コマンドを使用する。">
 
     <link href="/css/compiled/main.css" rel="stylesheet" />
 
@@ -306,42 +284,36 @@ brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下�
   >lsp-dart
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/org-download/"
     
   >org-download
     </a>
+  
+    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
+              <a
+                href="#%e3%83%89%e3%83%a9%e3%83%83%e3%82%b0-and-%e3%83%89%e3%83%ad%e3%83%83%e3%83%97"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >ドラッグ&amp;amp;ドロップ</a>
+            </li>
+          <li>
+              <a
+                href="#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >コマンド</a>
+            </li>
+          </ul>
+  
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/"
     
   >Orgモードで数式をプレビューするためのLaTeX設定
     </a>
-  
-    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
-              <a
-                href="#%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >インストール</a>
-            </li>
-          <li>
-              <a
-                href="#elisp"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >Elisp</a>
-            </li>
-          <li>
-              <a
-                href="#%e5%8f%82%e8%80%83"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >参考</a>
-            </li>
-          </ul>
-  
               
             </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -475,17 +447,17 @@ brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下�
   >lsp-dart
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/org-download/"
     
   >org-download
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/"
     
   >Orgモードで数式をプレビューするためのLaTeX設定
@@ -561,15 +533,27 @@ brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下�
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
     <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">インストール
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e3%83%89%e3%83%a9%e3%83%83%e3%82%b0-and-%e3%83%89%e3%83%ad%e3%83%83%e3%83%97">ドラッグ&amp;ドロップ
         </a>
       </li>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#elisp">Elisp
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89">コマンド
         </a>
       </li>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8f%82%e8%80%83">参考
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#org-download-image">org-download-image
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#org-download-clipboard">org-download-clipboard
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#org-download-yank">org-download-yank
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#org-download-screenshot">org-download-screenshot
         </a>
       </li></ul>
       <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
@@ -593,144 +577,87 @@ brew install --cask mactex-no-gui Elisp AUCTeXをインストールし、以下�
         </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">Orgモードで数式をプレビューするためのLaTeX設定</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">org-download</div>
   </div>
 
         <div class="content">
-          <h1>Orgモードで数式をプレビューするためのLaTeX設定</h1>
-          <p>Emacsで数式をプレビューするためのLaTeX環境を構築した。</p>
-<p>&ldquo;Emacs&rdquo;, &ldquo;LaTeX&rdquo;、で検索するとLaTeXで執筆するための解説記事が出てくるが、
-私はOrgモードで数式プレビューができれば十分なので、そのための最小限の設定をまとめた。</p>
+          <h1>org-download</h1>
+          <p>org-downloadの使い方について調べたのでメモ。
+downloadという名前が若干ややこしく感じるが、ローカル画像をインサートする際の便利機能としても使える。</p>
 <ul>
-<li>対象環境: MacOS</li>
+<li>動作環境</li>
 </ul>
-<h2>インストール<span class="hx-absolute -hx-mt-20" id="インストール"></span>
-    <a href="#%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>GUIなしのMacTeXをインストールするために、以下のコマンドを実行。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="nv">brew</span> <span class="nv">install</span> <span class="nv">--cask</span> <span class="nv">mactex-no-gui</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<h2>Elisp<span class="hx-absolute -hx-mt-20" id="elisp"></span>
-    <a href="#elisp" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>AUCTeXをインストールし、以下の設定を追加した。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">leaf</span> <span class="nv">auctex</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">t</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">TeX-mode-hook</span> <span class="o">.</span> <span class="nv">LaTeX-math-mode</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">TeX-mode-hook</span> <span class="o">.</span> <span class="nv">auto-image-file-mode</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-preview-latex-default-process</span> <span class="ss">&#39;dvipng</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-format-latex-options</span>
-</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">plist-put</span> <span class="nv">org-format-latex-options</span> <span class="nb">:scale</span> <span class="mf">1.5</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">leaf</span> <span class="nv">latex-math-preview</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:ensure</span> <span class="no">t</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:after</span> <span class="nv">auctex</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:config</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">latex-math-preview-in-math-mode-p-func</span> <span class="ss">&#39;latex-math-preview-in-math-mode-p</span>
-</span></span><span class="line"><span class="cl">          <span class="nv">latex-math-preview-tex-to-png-for-preview</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">platex</span> <span class="nv">dvipng</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="nv">latex-math-preview-tex-to-png-for-save</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">platex</span> <span class="nv">dvipng</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="nv">latex-math-preview-tex-to-eps-for-save</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">platex</span> <span class="nv">dvips-to-eps</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="nv">latex-math-preview-beamer-to-png</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">platex</span> <span class="nv">dvipdfmx</span> <span class="nv">gs-to-png</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">leaf</span> <span class="nv">company-math</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:ensure</span> <span class="no">t</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:hook</span> <span class="p">(</span><span class="nv">TeX-mode-hook</span> <span class="o">.</span> <span class="nv">company-math-mode-setup</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">:config</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">defun</span> <span class="nv">company-math-mode-setup</span> <span class="p">()</span>
-</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;company-math</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">setq-local</span> <span class="nv">company-backends</span>
-</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nf">append</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">company-math-symbols-latex</span> <span class="nv">company-latex-commands</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">                          <span class="nv">company-backends</span><span class="p">))))</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">;; インラインプレビューの高速化</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;TeX-mode-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">preview-image-type</span> <span class="ss">&#39;dvipng</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">;; インラインプレビューの文字化け回避</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;TeX-mode-hook</span>
-</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
-</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nb">setq</span> <span class="nv">preview-default-option-list</span>
-</span></span><span class="line"><span class="cl">                    <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;displaymath&#34;</span> <span class="s">&#34;floats&#34;</span> <span class="s">&#34;graphics&#34;</span> <span class="s">&#34;textmath&#34;</span> <span class="s">&#34;footnotes&#34;</span><span class="p">)))))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p>この設定で、OrgファイルにLaTeX形式で数式を書いたら、 <code>C-c C-x C-l</code> でプレビューできるようになった。
-デフォルトではプレビュー文字が小さかったため、以下の設定で文字サイズを大きくしている。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-preview-latex-default-process</span> <span class="ss">&#39;dvipng</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-format-latex-options</span>
-</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">plist-put</span> <span class="nv">org-format-latex-options</span> <span class="nb">:scale</span> <span class="mf">1.5</span><span class="p">))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p>いきなりOrgファイルに直接LaTeXを書くのは難しいので、<a href="https://github.com/latex-lsp/texlab" target="_blank" rel="noopener">texlab</a> というLaTeX用のLSPサーバを導入して
-<code>.sty</code> ファイルでLSPのサポートを受けながら書いたものをOrgモードに写している。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="nb">:hook</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">go-ts-mode-hook</span> <span class="o">.</span> <span class="nv">eglot-ensure</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">LaTeX-mode-hook</span> <span class="o">.</span> <span class="nv">eglot-ensure</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">:config</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;eglot-server-programs</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">LaTeX-mode</span> <span class="o">.</span> <span class="p">(</span><span class="s">&#34;texlab&#34;</span><span class="p">))))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p><a href="https://note.com/9256/n/ne9cba9f6bcf5" target="_blank" rel="noopener">こちら</a>を参考にして数式の書き方を覚えていきたい。</p>
-<h2>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
-    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
-<li><a href="https://tam5917.hatenablog.com/entry/2021/03/30/202037#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" rel="noopener">EmacsにおけるLaTeX執筆環境構築（１）AUCTeXの設定と使い方について</a></li>
-<li><a href="https://note.com/9256/n/ne9cba9f6bcf5" target="_blank" rel="noopener">【見習いTeX使いのために】最初に覚えるコマンドまとめ</a></li>
+<blockquote>
+<p>GNU Emacs 30.0.91 (build 1, aarch64-apple-darwin23.6.0, NS appkit-2487.70 Version 14.6.1 (Build 23G93)) of 2024-10-16</p>
+</blockquote>
+<h2>ドラッグ&amp;ドロップ<span class="hx-absolute -hx-mt-20" id="ドラッグ-and-ドロップ"></span>
+    <a href="#%e3%83%89%e3%83%a9%e3%83%83%e3%82%b0-and-%e3%83%89%e3%83%ad%e3%83%83%e3%83%97" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>まずドラッグ&amp;ドロップだが、私の環境では正常に動作しない。
+Emacs29で本体に導入されたドラッグ&amp;ドロップ機能と競合してるのが原因のようだ。</p>
+<ul>
+<li><a href="https://github.com/abo-abo/org-download/issues/215" target="_blank" rel="noopener">Integration with emacs 29 and native drag and drop support #215</a></li>
 </ul>
+<p><code>org-download-image-dir</code> はorg-downloadでダウンロードした画像の保存先として指定されているが、
+ドラッグ&amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。
+あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。</p>
+<h2>コマンド<span class="hx-absolute -hx-mt-20" id="コマンド"></span>
+    <a href="#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。
+画像の保存先は <code>org-download-image-dir</code> で指定したフォルダになる。</p>
+<h3>org-download-image<span class="hx-absolute -hx-mt-20" id="org-download-image"></span>
+    <a href="#org-download-image" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。</p>
+<h3>org-download-clipboard<span class="hx-absolute -hx-mt-20" id="org-download-clipboard"></span>
+    <a href="#org-download-clipboard" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>クリップボードにコピーした画像を挿入する。
+このコマンドを使う場合、MacOSでは <code>pngpaste</code> のインストールが必要となる。</p>
+<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+  
+
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install pngpaste</span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+  <button
+    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+    title="Copy code"
+  >
+    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
+    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
+  </button>
+</div>
+
+  
+</div>
+<h3>org-download-yank<span class="hx-absolute -hx-mt-20" id="org-download-yank"></span>
+    <a href="#org-download-yank" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。
+Diredでファイルパスを取得するには、 <code>0 w</code> コマンドを使用する。</p>
+<h3>org-download-screenshot<span class="hx-absolute -hx-mt-20" id="org-download-screenshot"></span>
+    <a href="#org-download-screenshot" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>このコマンドを実行すると、スクリーンショットを取得するためのアプリケーションが起動し、
+OSのカーソルがスクリーンショットの範囲選択に切り替わる。
+取得したスクリーンショットは、指定した場所に挿入される。
+デフォルトではスクリーンショットのアプリケーションが <code>gnome-screenshot</code> になっており
+MacOS用に設定を変更する必要があった。</p>
+<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+  
+
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-download-screenshot-method</span> <span class="s">&#34;screencapture -i %s&#34;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+  <button
+    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+    title="Copy code"
+  >
+    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
+    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
+  </button>
+</div>
+
+  
+</div>
 
         </div>
         <div class="hx-mt-16"></div>
         <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/emacs/org-download/"
-        title="org-download"
+        href="/docs/emacs/lsp-dart/"
+        title="lsp-dart"
         class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>org-download</a><a
-        href="/docs/emacs/rustic-mode-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/"
-        title="rustic-mode コマンド"
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>lsp-dart</a><a
+        href="/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/"
+        title="Orgモードで数式をプレビューするためのLaTeX設定"
         class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
-      >rustic-mode コマンド<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
+      >Orgモードで数式をプレビューするためのLaTeX設定<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
         
       </main>
     </article>
