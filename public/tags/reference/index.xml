@@ -230,6 +230,76 @@ Ankiアプリが起動中で、かつAnki Connect設定済みである必要が�
     </item>
     
     <item>
+      <title>Fifteen ways to use Embark を読んだ</title>
+      <link>http://localhost:1313/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;https://karthinks.com/software/fifteen-ways-to-use-embark/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://karthinks.com/software/fifteen-ways-to-use-embark/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;備忘のためのメモ。&lt;/p&gt;
+&lt;h2&gt;1. Open any buffer by splitting any window&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1-dot-open-any-buffer-by-splitting-any-window&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-dot-open-any-buffer-by-splitting-any-window&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;いきなりだが個人的に使わなそうなので詳細は割愛。
+内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを
+any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。
+ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。&lt;/p&gt;
+&lt;h2&gt;2. Copy a file to a remote location when finding a file&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2-dot-copy-a-file-to-a-remote-location-when-finding-a-file&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-dot-copy-a-file-to-a-remote-location-when-finding-a-file&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;c&lt;/code&gt; でコピー先を指定してコピー&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;embark-act&lt;/code&gt; の際にプリフィックス(&lt;code&gt;C-u&lt;/code&gt;) を付けると、find-fileから抜けずに続行できる&lt;/p&gt;
+&lt;h2&gt;3. Insert a minibuffer candidate into the buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;3-dot-insert-a-minibuffer-candidate-into-the-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-dot-insert-a-minibuffer-candidate-into-the-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;i&lt;/code&gt; で現在のバッファにファイル名を挿入する&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;I&lt;/code&gt; だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。&lt;/p&gt;
+&lt;h2&gt;4. Run a shell command on a minibuffer candidate file without losing your session&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;&amp;amp;&lt;/code&gt; で &lt;code&gt;async-shell-command&lt;/code&gt; 。選択したファイル名が挿入された状態で実行できる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;動画では &lt;code&gt;file&lt;/code&gt; コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。&lt;/p&gt;
+&lt;h2&gt;5. Open a file as root without losing your session&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;5-dot-open-a-file-as-root-without-losing-your-session&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#5-dot-open-a-file-as-root-without-losing-your-session&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;自PC内でrootを取ってファイル操作したい場面はあまり無いので割愛。&lt;/p&gt;
+&lt;h2&gt;6. Upload a region of text to 0x0&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;6-dot-upload-a-region-of-text-to-0x0&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#6-dot-upload-a-region-of-text-to-0x0&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;0x0.st というファイル共有サービスがあって、そこにリージョンの内容をアップロードするという内容。
+便利だが、自分の場合他人に何かを共有する場面はほとんどが業務に関することなので、利用することは無さそう。&lt;/p&gt;
+&lt;h2&gt;7. Visit a package’s URL from the minibuffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;7-dot-visit-a-package-s-url-from-the-minibuffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#7-dot-visit-a-package-s-url-from-the-minibuffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Describe package (C-h P)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;u&lt;/code&gt; で &lt;code&gt;embark-browse-package-url&lt;/code&gt; 。 パッケージのURLがブラウザが開かれる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;8. Set a variable from anywhere it appears in a buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;elispのバッファで、変数にカーソルを合わせて &lt;code&gt;embark-act&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;=&lt;/code&gt; で &lt;code&gt;set-variable&lt;/code&gt; できる&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;9. Add a keybinding for a command name from anywhere it appears&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;バッファ内のコマンド名から &lt;code&gt;global-set-key&lt;/code&gt; できるらしい。あまり使う機会は無さそう。&lt;/p&gt;
+&lt;h2&gt;10. Export Emacs package candidates to a package menu&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;10-dot-export-emacs-package-candidates-to-a-package-menu&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#10-dot-export-emacs-package-candidates-to-a-package-menu&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;embark-export&lt;/code&gt; は日頃から使ってるので割愛。&lt;/p&gt;
+&lt;h2&gt;11. Collect imenu candidates in an “imenu-list”&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;11-dot-collect-imenu-candidates-in-an-imenu-list&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#11-dot-collect-imenu-candidates-in-an-imenu-list&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;imenu&lt;/code&gt; を &lt;code&gt;embark-export&lt;/code&gt; したいモチベーションが分からなかったが、 &lt;code&gt;imenu&lt;/code&gt; を普段使ってないから分からないだけかもしれない。
+便利そうなので積極的に使っていきたい。 取り急ぎ consult-imenuを &lt;code&gt;M-g i&lt;/code&gt; にセットした。&lt;/p&gt;
+&lt;h2&gt;12. Export file candidates to a dired-buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;12-dot-export-file-candidates-to-a-dired-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#12-dot-export-file-candidates-to-a-dired-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-export&lt;/code&gt; すると絞り込んだファイル一覧でdiredバッファが作られる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;diredになるの知らなかった。&lt;/p&gt;
+&lt;h2&gt;13. Export buffer candidates to ibuffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;13-dot-export-buffer-candidates-to-ibuffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#13-dot-export-buffer-candidates-to-ibuffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;バッファ一覧で &lt;code&gt;embark-export&lt;/code&gt; すると ibufferになる。&lt;/p&gt;
+&lt;h2&gt;14. Export variable candidates to a customize buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;14-dot-export-variable-candidates-to-a-customize-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#14-dot-export-variable-candidates-to-a-customize-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;describe-variable&lt;/code&gt; の変数一覧で &lt;code&gt;embark-export&lt;/code&gt; するとcustomize bufferになる。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Go開発向けパッケージ</title>
       <link>http://localhost:1313/docs/emacs/go%E9%96%8B%E7%99%BA%E5%90%91%E3%81%91%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -563,15 +633,17 @@ Emacs29で本体に導入されたドラッグ&amp;amp;ドロップ機能と競�
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/abo-abo/org-download/issues/215&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Integration with emacs 29 and native drag and drop support #215&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;org-download-image-dir&lt;/code&gt; はorg-downloadでダウンロードした画像の保存先だが
-ドラッグ&amp;amp;ドロップ時にこれが使われず、カレントフォルダ内のdataフォルダに画像が保存された。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;org-download-image-dir&lt;/code&gt; はorg-downloadでダウンロードした画像の保存先として指定されているが、
+ドラッグ&amp;amp;ドロップ時にはこの設定が使われず、カレントフォルダ内のdataフォルダに画像が保存されてしまう。
+あと、これは私の環境の問題かもしれないが、挿入されるインライン画像のパスがずれてしまう。&lt;/p&gt;
 &lt;h2&gt;コマンド&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;コマンド&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;org-download-image&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-image&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#org-download-image&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;org-download-image&lt;/code&gt; コマンドを実行すると、ミニバッファにURLした画像がダウンロードされ、
-orgにインライン画像がインサートされる。ダウンロードした画像の保存先は &lt;code&gt;org-download-image-dir&lt;/code&gt; 。&lt;/p&gt;
+    &lt;a href=&#34;#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;以下のコマンドを使用することで、画像ファイルを保存し、インライン画像として挿入できる。
+画像の保存先は &lt;code&gt;org-download-image-dir&lt;/code&gt; で指定したフォルダになる。&lt;/p&gt;
+&lt;h3&gt;org-download-image&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-image&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#org-download-image&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;このコマンドを実行すると、ミニバッファに入力したURLの画像がダウンロードされ、挿入される。&lt;/p&gt;
 &lt;h3&gt;org-download-clipboard&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-clipboard&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#org-download-clipboard&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;クリップボードにコピーした画像をorgのインライン画像として挿入する。
-このコマンドを使う場合、MacOSでは &lt;code&gt;pngpaste&lt;/code&gt; のインストールが必要。&lt;/p&gt;
+    &lt;a href=&#34;#org-download-clipboard&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;クリップボードにコピーした画像を挿入する。
+このコマンドを使う場合、MacOSでは &lt;code&gt;pngpaste&lt;/code&gt; のインストールが必要となる。&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
   
 
@@ -588,13 +660,14 @@ orgにインライン画像がインサートされる。ダウンロードし�
   
 &lt;/div&gt;
 &lt;h3&gt;org-download-yank&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-yank&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#org-download-yank&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;kill-ringに保存したURL、もしくはファイルパスの画像をダウンロードしてインサートする。
-diredでファイルパスを取得するコマンドは &lt;code&gt;0 w&lt;/code&gt;&lt;/p&gt;
+    &lt;a href=&#34;#org-download-yank&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;kill-ringに保存されたURLまたはファイルパスの画像をダウンロードして挿入する。
+Diredでファイルパスを取得するには、 &lt;code&gt;0 w&lt;/code&gt; コマンドを使用する。&lt;/p&gt;
 &lt;h3&gt;org-download-screenshot&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;org-download-screenshot&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#org-download-screenshot&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;実行するとスクショを取得するアプリケーションが起動する(OSのカーソルがスクショ範囲選択になる)。
-そこで取得したスクリーンショットがダウンロード&amp;amp;インサートされる。
-デフォルトではスクショを取るためのアプリケーションが &lt;code&gt;gnome-screenshot&lt;/code&gt; になってるので、MacOS用に
-設定する必要がある。&lt;/p&gt;
+    &lt;a href=&#34;#org-download-screenshot&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;このコマンドを実行すると、スクリーンショットを取得するためのアプリケーションが起動し、
+OSのカーソルがスクリーンショットの範囲選択に切り替わる。
+取得したスクリーンショットは、指定した場所に挿入される。
+デフォルトではスクリーンショットのアプリケーションが &lt;code&gt;gnome-screenshot&lt;/code&gt; になっており
+MacOS用に設定を変更する必要があった。&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
   
 
