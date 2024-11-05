@@ -11,70 +11,69 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>tab-bar-mode – AWAWAWAWA</title>
-  <meta name="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+  <title>Fifteen ways to use Embark を読んだ – AWAWAWAWA</title>
+  <meta name="description" content="https://karthinks.com/software/fifteen-ways-to-use-embark/
+備忘のためのメモ。
+1. Open any buffer by splitting any window いきなりだが個人的に使わなそうなので詳細は割愛。 内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。 ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。
+2. Copy a file to a remote location when finding a file Find file などでファイルを絞り込む embark-act -&gt; c でコピー先を指定してコピー embark-act の際にプリフィックス(C-u) を付けると、find-fileから抜けずに続行できる
+3. Insert a minibuffer candidate into the buffer Find file などでファイルを絞り込む embark-act -&gt; i で現在のバッファにファイル名を挿入する I だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。
+4. Run a shell command on a minibuffer candidate file without losing your session Find file などでファイルを絞り込む embark-act -&gt; &amp; で async-shell-command 。選択したファイル名が挿入された状態で実行できる。 動画では file コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。" />
 
   
-    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/emacs/20241020210719-tab_bar_mode/" itemprop="url" />
+    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/" itemprop="url" />
   
-
-  
-
-<meta property="og:title" content="tab-bar-mode" />
-<meta property="og:description" content="tab-bar-mode
-    ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。
-tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-
-C-x t 2: 新規タブ作成
-C-x t 0: 現在タブ削除
-C-x t o: タブ移動
-C-x t RET: タブ選択
-
-tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
 
   
 
-(setq org-agenda-window-setup &#39;other-tab)
-  
+<meta property="og:title" content="Fifteen ways to use Embark を読んだ" />
+<meta property="og:description" content="https://karthinks.com/software/fifteen-ways-to-use-embark/
+備忘のためのメモ。
+1. Open any buffer by splitting any window
+    いきなりだが個人的に使わなそうなので詳細は割愛。
+内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを
+any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。
+ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。
+2. Copy a file to a remote location when finding a file
     
+Find file などでファイルを絞り込む
+embark-act -&gt; c でコピー先を指定してコピー
+
+embark-act の際にプリフィックス(C-u) を付けると、find-fileから抜けずに続行できる
+3. Insert a minibuffer candidate into the buffer
     
-  
+Find file などでファイルを絞り込む
+embark-act -&gt; i で現在のバッファにファイル名を挿入する
 
+I だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。
+4. Run a shell command on a minibuffer candidate file without losing your session
+    
+Find file などでファイルを絞り込む
+embark-act -&gt; &amp; で async-shell-command 。選択したファイル名が挿入された状態で実行できる。
 
-  
-
-org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい" />
+動画では file コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://awawawa.wakamenod.com/docs/emacs/20241020210719-tab_bar_mode/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://awawawa.wakamenod.com/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="tab-bar-mode">
-  <meta itemprop="description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
-  <meta itemprop="wordCount" content="42">
+  <meta itemprop="name" content="Fifteen ways to use Embark を読んだ">
+  <meta itemprop="description" content="https://karthinks.com/software/fifteen-ways-to-use-embark/
+備忘のためのメモ。
+1. Open any buffer by splitting any window いきなりだが個人的に使わなそうなので詳細は割愛。 内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。 ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。
+2. Copy a file to a remote location when finding a file Find file などでファイルを絞り込む embark-act -&gt; c でコピー先を指定してコピー embark-act の際にプリフィックス(C-u) を付けると、find-fileから抜けずに続行できる
+3. Insert a minibuffer candidate into the buffer Find file などでファイルを絞り込む embark-act -&gt; i で現在のバッファにファイル名を挿入する I だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。
+4. Run a shell command on a minibuffer candidate file without losing your session Find file などでファイルを絞り込む embark-act -&gt; &amp; で async-shell-command 。選択したファイル名が挿入された状態で実行できる。 動画では file コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。">
+  <meta itemprop="wordCount" content="219">
   <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="tab-bar-mode">
-  <meta name="twitter:description" content="tab-bar-mode ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 tab-line-mode)。 tab-bar-mode はウィンドウ構成を1タブで管理する。便利。
-使いそうなコマンド:
-C-x t 2: 新規タブ作成 C-x t 0: 現在タブ削除 C-x t o: タブ移動 C-x t RET: タブ選択 tab-bar-history-mode を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。 これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。 tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。
-tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプションが使えるようになる
-(setq org-agenda-window-setup &#39;other-tab) org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。 アジェンダを閉じるとタブも閉じられる。 既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい">
+  <meta name="twitter:title" content="Fifteen ways to use Embark を読んだ">
+  <meta name="twitter:description" content="https://karthinks.com/software/fifteen-ways-to-use-embark/
+備忘のためのメモ。
+1. Open any buffer by splitting any window いきなりだが個人的に使わなそうなので詳細は割愛。 内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。 ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。
+2. Copy a file to a remote location when finding a file Find file などでファイルを絞り込む embark-act -&gt; c でコピー先を指定してコピー embark-act の際にプリフィックス(C-u) を付けると、find-fileから抜けずに続行できる
+3. Insert a minibuffer candidate into the buffer Find file などでファイルを絞り込む embark-act -&gt; i で現在のバッファにファイル名を挿入する I だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。
+4. Run a shell command on a minibuffer candidate file without losing your session Find file などでファイルを絞り込む embark-act -&gt; &amp; で async-shell-command 。選択したファイル名が挿入された状態で実行できる。 動画では file コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。">
 
     <link rel="preload" href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" as="style" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
     <link href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" rel="stylesheet" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
@@ -234,9 +233,9 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >Copilot
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/"
     
   >Fifteen ways to use Embark を読んだ
@@ -298,9 +297,9 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
   >smartparens
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/20241020210719-tab_bar_mode/"
     
   >tab-bar-mode
@@ -352,11 +351,59 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
     <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#tab-bar-mode">tab-bar-mode
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-dot-open-any-buffer-by-splitting-any-window">1. Open any buffer by splitting any window
         </a>
       </li>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8f%82%e8%80%83">参考
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-dot-copy-a-file-to-a-remote-location-when-finding-a-file">2. Copy a file to a remote location when finding a file
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-dot-insert-a-minibuffer-candidate-into-the-buffer">3. Insert a minibuffer candidate into the buffer
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session">4. Run a shell command on a minibuffer candidate file without losing your session
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#5-dot-open-a-file-as-root-without-losing-your-session">5. Open a file as root without losing your session
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#6-dot-upload-a-region-of-text-to-0x0">6. Upload a region of text to 0x0
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#7-dot-visit-a-package-s-url-from-the-minibuffer">7. Visit a package’s URL from the minibuffer
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer">8. Set a variable from anywhere it appears in a buffer
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears">9. Add a keybinding for a command name from anywhere it appears
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#10-dot-export-emacs-package-candidates-to-a-package-menu">10. Export Emacs package candidates to a package menu
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#11-dot-collect-imenu-candidates-in-an-imenu-list">11. Collect imenu candidates in an “imenu-list”
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#12-dot-export-file-candidates-to-a-dired-buffer">12. Export file candidates to a dired-buffer
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#13-dot-export-buffer-candidates-to-ibuffer">13. Export buffer candidates to ibuffer
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#14-dot-export-variable-candidates-to-a-customize-buffer">14. Export variable candidates to a customize buffer
         </a>
       </li></ul>
       <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
@@ -380,55 +427,80 @@ tab-bar-mode を使うと org-agenda-window-setup で other-tab のオプショ�
         </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">tab-bar-mode</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">Fifteen ways to use Embark を読んだ</div>
   </div>
 
         <div class="content">
-          <h1>tab-bar-mode</h1>
-          <h2>tab-bar-mode<span class="hx-absolute -hx-mt-20" id="tab-bar-mode"></span>
-    <a href="#tab-bar-mode" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ずっとバッファをtabに表示するものと思って使ってこなかった (それは多分 <code>tab-line-mode</code>)。
-<code>tab-bar-mode</code> はウィンドウ構成を1タブで管理する。便利。</p>
-<p>使いそうなコマンド:</p>
-<ul>
-<li><code>C-x t 2</code>: 新規タブ作成</li>
-<li><code>C-x t 0</code>: 現在タブ削除</li>
-<li><code>C-x t o</code>: タブ移動</li>
-<li><code>C-x t RET</code>: タブ選択</li>
-</ul>
-<p><code>tab-bar-history-mode</code> を有効にすると、タブ一覧の左に&lt; &gt;が表示されるようになる。
-これをポチポチすると、そのタブのウィンドウ構成を遡ることができる。
-tab-bar-historyのコマンドもあるけど滅多に使わなそうなので、当面マウス操作で良いか。</p>
-<p><code>tab-bar-mode</code> を使うと <code>org-agenda-window-setup</code> で <code>other-tab</code> のオプションが使えるようになる</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-window-setup</span> <span class="ss">&#39;other-tab</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p>org-agendaを開くと、自動で新規タブが作られ、そのタブでアジェンダが表示される。
-アジェンダを閉じるとタブも閉じられる。
-既存のウィンドウ構成を崩さずにフレームを目一杯使ってアジェンダを表示できて嬉しい</p>
-<h3>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
-    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
-<li><a href="https://blog.rocktakey.com/information-science/2020-d99103ba-db6f-5424-3053-087c12ab74be/" target="_blank" rel="noopener">tab-bar-modeを探検する</a></li>
-</ul>
+          <h1>Fifteen ways to use Embark を読んだ</h1>
+          <p><a href="https://karthinks.com/software/fifteen-ways-to-use-embark/" target="_blank" rel="noopener">https://karthinks.com/software/fifteen-ways-to-use-embark/</a></p>
+<p>備忘のためのメモ。</p>
+<h2>1. Open any buffer by splitting any window<span class="hx-absolute -hx-mt-20" id="1-dot-open-any-buffer-by-splitting-any-window"></span>
+    <a href="#1-dot-open-any-buffer-by-splitting-any-window" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>いきなりだが個人的に使わなそうなので詳細は割愛。
+内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを
+any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。
+ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。</p>
+<h2>2. Copy a file to a remote location when finding a file<span class="hx-absolute -hx-mt-20" id="2-dot-copy-a-file-to-a-remote-location-when-finding-a-file"></span>
+    <a href="#2-dot-copy-a-file-to-a-remote-location-when-finding-a-file" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li><code>Find file</code> などでファイルを絞り込む</li>
+<li><code>embark-act</code> -&gt; <code>c</code> でコピー先を指定してコピー</li>
+</ol>
+<p><code>embark-act</code> の際にプリフィックス(<code>C-u</code>) を付けると、find-fileから抜けずに続行できる</p>
+<h2>3. Insert a minibuffer candidate into the buffer<span class="hx-absolute -hx-mt-20" id="3-dot-insert-a-minibuffer-candidate-into-the-buffer"></span>
+    <a href="#3-dot-insert-a-minibuffer-candidate-into-the-buffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li><code>Find file</code> などでファイルを絞り込む</li>
+<li><code>embark-act</code> -&gt; <code>i</code> で現在のバッファにファイル名を挿入する</li>
+</ol>
+<p><code>I</code> だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。</p>
+<h2>4. Run a shell command on a minibuffer candidate file without losing your session<span class="hx-absolute -hx-mt-20" id="4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session"></span>
+    <a href="#4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li><code>Find file</code> などでファイルを絞り込む</li>
+<li><code>embark-act</code> -&gt; <code>&amp;</code> で <code>async-shell-command</code> 。選択したファイル名が挿入された状態で実行できる。</li>
+</ol>
+<p>動画では <code>file</code> コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。</p>
+<h2>5. Open a file as root without losing your session<span class="hx-absolute -hx-mt-20" id="5-dot-open-a-file-as-root-without-losing-your-session"></span>
+    <a href="#5-dot-open-a-file-as-root-without-losing-your-session" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>自PC内でrootを取ってファイル操作したい場面はあまり無いので割愛。</p>
+<h2>6. Upload a region of text to 0x0<span class="hx-absolute -hx-mt-20" id="6-dot-upload-a-region-of-text-to-0x0"></span>
+    <a href="#6-dot-upload-a-region-of-text-to-0x0" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>0x0.st というファイル共有サービスがあって、そこにリージョンの内容をアップロードするという内容。
+便利だが、自分の場合他人に何かを共有する場面はほとんどが業務に関することなので、利用することは無さそう。</p>
+<h2>7. Visit a package’s URL from the minibuffer<span class="hx-absolute -hx-mt-20" id="7-dot-visit-a-package-s-url-from-the-minibuffer"></span>
+    <a href="#7-dot-visit-a-package-s-url-from-the-minibuffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li><code>Describe package (C-h P)</code></li>
+<li><code>embark-act</code> -&gt; <code>u</code> で <code>embark-browse-package-url</code> 。 パッケージのURLがブラウザが開かれる。</li>
+</ol>
+<h2>8. Set a variable from anywhere it appears in a buffer<span class="hx-absolute -hx-mt-20" id="8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer"></span>
+    <a href="#8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li>elispのバッファで、変数にカーソルを合わせて <code>embark-act</code></li>
+<li><code>=</code> で <code>set-variable</code> できる</li>
+</ol>
+<h2>9. Add a keybinding for a command name from anywhere it appears<span class="hx-absolute -hx-mt-20" id="9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears"></span>
+    <a href="#9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>バッファ内のコマンド名から <code>global-set-key</code> できるらしい。あまり使う機会は無さそう。</p>
+<h2>10. Export Emacs package candidates to a package menu<span class="hx-absolute -hx-mt-20" id="10-dot-export-emacs-package-candidates-to-a-package-menu"></span>
+    <a href="#10-dot-export-emacs-package-candidates-to-a-package-menu" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>embark-export</code> は日頃から使ってるので割愛。</p>
+<h2>11. Collect imenu candidates in an “imenu-list”<span class="hx-absolute -hx-mt-20" id="11-dot-collect-imenu-candidates-in-an-imenu-list"></span>
+    <a href="#11-dot-collect-imenu-candidates-in-an-imenu-list" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>imenu</code> を <code>embark-export</code> したいモチベーションが分からなかったが、 <code>imenu</code> を普段使ってないから分からないだけかもしれない。
+便利そうなので積極的に使っていきたい。 取り急ぎ consult-imenuを <code>M-g i</code> にセットした。</p>
+<h2>12. Export file candidates to a dired-buffer<span class="hx-absolute -hx-mt-20" id="12-dot-export-file-candidates-to-a-dired-buffer"></span>
+    <a href="#12-dot-export-file-candidates-to-a-dired-buffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ol>
+<li><code>Find file</code> などでファイルを絞り込む</li>
+<li><code>embark-export</code> すると絞り込んだファイル一覧でdiredバッファが作られる。</li>
+</ol>
+<p>diredになるの知らなかった。</p>
+<h2>13. Export buffer candidates to ibuffer<span class="hx-absolute -hx-mt-20" id="13-dot-export-buffer-candidates-to-ibuffer"></span>
+    <a href="#13-dot-export-buffer-candidates-to-ibuffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>バッファ一覧で <code>embark-export</code> すると ibufferになる。</p>
+<h2>14. Export variable candidates to a customize buffer<span class="hx-absolute -hx-mt-20" id="14-dot-export-variable-candidates-to-a-customize-buffer"></span>
+    <a href="#14-dot-export-variable-candidates-to-a-customize-buffer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>describe-variable</code> の変数一覧で <code>embark-export</code> するとcustomize bufferになる。</p>
 
         </div>
         <div class="hx-mt-16"></div>
         <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/emacs/20241021104652-smartparens/"
-        title="smartparens"
+        href="/docs/emacs/copilot/"
+        title="Copilot"
         class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>smartparens</a></div>
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Copilot</a><a
+        href="/docs/emacs/20241022120540-gpg_gnupg/"
+        title="gpg (GnuPG)"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
+      >gpg (GnuPG)<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
         
       </main>
     </article>

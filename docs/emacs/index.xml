@@ -75,6 +75,76 @@
     </item>
     
     <item>
+      <title>Fifteen ways to use Embark を読んだ</title>
+      <link>https://awawawa.wakamenod.com/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://awawawa.wakamenod.com/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;https://karthinks.com/software/fifteen-ways-to-use-embark/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://karthinks.com/software/fifteen-ways-to-use-embark/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;備忘のためのメモ。&lt;/p&gt;
+&lt;h2&gt;1. Open any buffer by splitting any window&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1-dot-open-any-buffer-by-splitting-any-window&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#1-dot-open-any-buffer-by-splitting-any-window&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;いきなりだが個人的に使わなそうなので詳細は割愛。
+内容としては、ファイルを開く際にどのウィンドウを使うか、またはどのウィンドウをスプリットして開くかを
+any windowを使って指定するというもの。先にウィンドウを作ってそこで開く方が早くないか?と思ってしまった。
+ただ、実際に運用してみて印象が変わるかもしれないので、また機会があったら試してみたい。&lt;/p&gt;
+&lt;h2&gt;2. Copy a file to a remote location when finding a file&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2-dot-copy-a-file-to-a-remote-location-when-finding-a-file&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#2-dot-copy-a-file-to-a-remote-location-when-finding-a-file&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;c&lt;/code&gt; でコピー先を指定してコピー&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;embark-act&lt;/code&gt; の際にプリフィックス(&lt;code&gt;C-u&lt;/code&gt;) を付けると、find-fileから抜けずに続行できる&lt;/p&gt;
+&lt;h2&gt;3. Insert a minibuffer candidate into the buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;3-dot-insert-a-minibuffer-candidate-into-the-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#3-dot-insert-a-minibuffer-candidate-into-the-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;i&lt;/code&gt; で現在のバッファにファイル名を挿入する&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;I&lt;/code&gt; だと相対パスか、もしくはバッファのコンテンツを挿入できる場合もあるらしいが、試したところバッファの挿入になることは未だない。&lt;/p&gt;
+&lt;h2&gt;4. Run a shell command on a minibuffer candidate file without losing your session&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#4-dot-run-a-shell-command-on-a-minibuffer-candidate-file-without-losing-your-session&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;&amp;amp;&lt;/code&gt; で &lt;code&gt;async-shell-command&lt;/code&gt; 。選択したファイル名が挿入された状態で実行できる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;動画では &lt;code&gt;file&lt;/code&gt; コマンドを実行していた。たしかに、ファイルを指定してコマンドを実行したい場面は割とよくあるかも。&lt;/p&gt;
+&lt;h2&gt;5. Open a file as root without losing your session&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;5-dot-open-a-file-as-root-without-losing-your-session&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#5-dot-open-a-file-as-root-without-losing-your-session&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;自PC内でrootを取ってファイル操作したい場面はあまり無いので割愛。&lt;/p&gt;
+&lt;h2&gt;6. Upload a region of text to 0x0&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;6-dot-upload-a-region-of-text-to-0x0&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#6-dot-upload-a-region-of-text-to-0x0&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;0x0.st というファイル共有サービスがあって、そこにリージョンの内容をアップロードするという内容。
+便利だが、自分の場合他人に何かを共有する場面はほとんどが業務に関することなので、利用することは無さそう。&lt;/p&gt;
+&lt;h2&gt;7. Visit a package’s URL from the minibuffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;7-dot-visit-a-package-s-url-from-the-minibuffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#7-dot-visit-a-package-s-url-from-the-minibuffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Describe package (C-h P)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-act&lt;/code&gt; -&amp;gt; &lt;code&gt;u&lt;/code&gt; で &lt;code&gt;embark-browse-package-url&lt;/code&gt; 。 パッケージのURLがブラウザが開かれる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;8. Set a variable from anywhere it appears in a buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#8-dot-set-a-variable-from-anywhere-it-appears-in-a-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;elispのバッファで、変数にカーソルを合わせて &lt;code&gt;embark-act&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;=&lt;/code&gt; で &lt;code&gt;set-variable&lt;/code&gt; できる&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;9. Add a keybinding for a command name from anywhere it appears&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#9-dot-add-a-keybinding-for-a-command-name-from-anywhere-it-appears&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;バッファ内のコマンド名から &lt;code&gt;global-set-key&lt;/code&gt; できるらしい。あまり使う機会は無さそう。&lt;/p&gt;
+&lt;h2&gt;10. Export Emacs package candidates to a package menu&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;10-dot-export-emacs-package-candidates-to-a-package-menu&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#10-dot-export-emacs-package-candidates-to-a-package-menu&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;embark-export&lt;/code&gt; は日頃から使ってるので割愛。&lt;/p&gt;
+&lt;h2&gt;11. Collect imenu candidates in an “imenu-list”&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;11-dot-collect-imenu-candidates-in-an-imenu-list&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#11-dot-collect-imenu-candidates-in-an-imenu-list&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;imenu&lt;/code&gt; を &lt;code&gt;embark-export&lt;/code&gt; したいモチベーションが分からなかったが、 &lt;code&gt;imenu&lt;/code&gt; を普段使ってないから分からないだけかもしれない。
+便利そうなので積極的に使っていきたい。 取り急ぎ consult-imenuを &lt;code&gt;M-g i&lt;/code&gt; にセットした。&lt;/p&gt;
+&lt;h2&gt;12. Export file candidates to a dired-buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;12-dot-export-file-candidates-to-a-dired-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#12-dot-export-file-candidates-to-a-dired-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Find file&lt;/code&gt; などでファイルを絞り込む&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;embark-export&lt;/code&gt; すると絞り込んだファイル一覧でdiredバッファが作られる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;diredになるの知らなかった。&lt;/p&gt;
+&lt;h2&gt;13. Export buffer candidates to ibuffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;13-dot-export-buffer-candidates-to-ibuffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#13-dot-export-buffer-candidates-to-ibuffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;バッファ一覧で &lt;code&gt;embark-export&lt;/code&gt; すると ibufferになる。&lt;/p&gt;
+&lt;h2&gt;14. Export variable candidates to a customize buffer&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;14-dot-export-variable-candidates-to-a-customize-buffer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#14-dot-export-variable-candidates-to-a-customize-buffer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;describe-variable&lt;/code&gt; の変数一覧で &lt;code&gt;embark-export&lt;/code&gt; するとcustomize bufferになる。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>gpg (GnuPG)</title>
       <link>https://awawawa.wakamenod.com/docs/emacs/20241022120540-gpg_gnupg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
