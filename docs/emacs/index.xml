@@ -774,5 +774,55 @@ tab-bar-historyのコマンドもあるけど滅多に使わなそうなので�
       </description>
     </item>
     
+    <item>
+      <title>お手軽Bookmark</title>
+      <link>https://awawawa.wakamenod.com/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://awawawa.wakamenod.com/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/</guid>
+      <description>
+        
+        
+        &lt;p&gt;とりあえず &lt;code&gt;consult-bookmark&lt;/code&gt; を既存のbookmark-jumpコマンド(&lt;code&gt;C-x r b&lt;/code&gt;)と置き換えておけばOK。
+&lt;code&gt;consult-bookmark&lt;/code&gt; からブックマークの一覧表示も登録もどちらも出来る。&lt;/p&gt;
+&lt;p&gt;また、 &lt;code&gt;consult-buffer&lt;/code&gt; で &lt;code&gt;m SPC&lt;/code&gt; を入力してもブックマーク一覧になる。&lt;/p&gt;
+&lt;p&gt;登録したブックマークを編集したいときは、 &lt;code&gt;M-x edit-bookmarks&lt;/code&gt; で &lt;strong&gt;Bookmark List&lt;/strong&gt; バッファが表示される。
+バッファ内で &lt;code&gt;?&lt;/code&gt; を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;コマンド&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;説明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RET&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ブックマークに移動。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;o&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;リストを残しつつ別ウィンドウでブックマークに移動。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;r&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ブックマークの名前を変更&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;d&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;削除マークを付ける。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;x&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;削除マークされたブックマークを削除。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;参考&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;参考&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://arialdomartini.github.io/emacs-bookmarks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emacs: Bookmarks&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
