@@ -59,5 +59,7 @@
     <loc>http://localhost:1313/tags/tools/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/tools/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/</loc>
   </url>
 </urlset>

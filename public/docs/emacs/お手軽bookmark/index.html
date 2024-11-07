@@ -11,62 +11,75 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>Expression(式) and Statement(文) – AWAWAWAWA</title>
-  <meta name="description" content="Expression(式) 値を生成する構文要素。 1 &#43; 2 , if true {1} else {2} など。 (Rustのifはif文でなく、if式)
-Statement(文) 実行のみで値を変えさない構文要素。 let x = 5; など。
-セミコロン Expression(式)の最後にセミコロン(;)を付けると、その式はStatement(文)に変わり 値を返さなくなる。
-fn example() { let x = 5; // これは文。セミコロンが付いているため、値を返さない let y = { 3 &#43; 2 }; // このブロック全体は式。最終行にセミコロンがないため5が返る let z = { 4; }; // セミコロンがあるため、zには()（ユニット）が代入される } " />
+  <title>お手軽Bookmark – AWAWAWAWA</title>
+  <meta name="description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
+また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
+登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
+コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks" />
 
   
-    <link rel="canonical" href="http://localhost:1313/docs/rust/expression%E5%BC%8F-and-statement%E6%96%87/" itemprop="url" />
+    <link rel="canonical" href="http://localhost:1313/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/" itemprop="url" />
   
-
-  
-
-<meta property="og:title" content="Expression(式) and Statement(文)" />
-<meta property="og:description" content="Expression(式)
-    値を生成する構文要素。 1 &#43; 2 , if true {1} else {2} など。
-(Rustのifはif文でなく、if式)
-Statement(文)
-    実行のみで値を変えさない構文要素。 let x = 5; など。
-セミコロン
-    Expression(式)の最後にセミコロン(;)を付けると、その式はStatement(文)に変わり
-値を返さなくなる。
 
   
 
-fn example() {
-    let x = 5; // これは文。セミコロンが付いているため、値を返さない
-    let y = { 3 &#43; 2 }; // このブロック全体は式。最終行にセミコロンがないため5が返る
-    let z = { 4; }; // セミコロンがあるため、zには()（ユニット）が代入される
-}
-  
-    
-    
-  
-
+<meta property="og:title" content="お手軽Bookmark" />
+<meta property="og:description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。
+consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
+また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
+登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。
+バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
 
   
-" />
+      
+          コマンド
+          説明
+      
+  
+  
+      
+          RET
+          ブックマークに移動。
+      
+      
+          o
+          リストを残しつつ別ウィンドウでブックマークに移動。
+      
+      
+          r
+          ブックマークの名前を変更
+      
+      
+          d
+          削除マークを付ける。
+      
+      
+          x
+          削除マークされたブックマークを削除。
+      
+  
+
+参考
+    Emacs: Bookmarks" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/rust/expression%E5%BC%8F-and-statement%E6%96%87/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="Expression(式) and Statement(文)">
-  <meta itemprop="description" content="Expression(式) 値を生成する構文要素。 1 &#43; 2 , if true {1} else {2} など。 (Rustのifはif文でなく、if式)
-Statement(文) 実行のみで値を変えさない構文要素。 let x = 5; など。
-セミコロン Expression(式)の最後にセミコロン(;)を付けると、その式はStatement(文)に変わり 値を返さなくなる。
-fn example() { let x = 5; // これは文。セミコロンが付いているため、値を返さない let y = { 3 &#43; 2 }; // このブロック全体は式。最終行にセミコロンがないため5が返る let z = { 4; }; // セミコロンがあるため、zには()（ユニット）が代入される } ">
-  <meta itemprop="wordCount" content="51">
-  <meta itemprop="keywords" content="Rust,Reference">
+  <meta itemprop="name" content="お手軽Bookmark">
+  <meta itemprop="description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
+また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
+登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
+コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks">
+  <meta itemprop="wordCount" content="38">
+  <meta itemprop="keywords" content="Emacs,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Expression(式) and Statement(文)">
-  <meta name="twitter:description" content="Expression(式) 値を生成する構文要素。 1 &#43; 2 , if true {1} else {2} など。 (Rustのifはif文でなく、if式)
-Statement(文) 実行のみで値を変えさない構文要素。 let x = 5; など。
-セミコロン Expression(式)の最後にセミコロン(;)を付けると、その式はStatement(文)に変わり 値を返さなくなる。
-fn example() { let x = 5; // これは文。セミコロンが付いているため、値を返さない let y = { 3 &#43; 2 }; // このブロック全体は式。最終行にセミコロンがないため5が返る let z = { 4; }; // セミコロンがあるため、zには()（ユニット）が代入される } ">
+  <meta name="twitter:title" content="お手軽Bookmark">
+  <meta name="twitter:description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
+また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
+登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
+コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks">
 
     <link href="/css/compiled/main.css" rel="stylesheet" />
 
@@ -207,7 +220,7 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
   >Anki
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
@@ -304,44 +317,32 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
   >tab-bar-mode
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/"
     
   >お手軽Bookmark
     </a>
+  
+    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
+              <a
+                href="#%e5%8f%82%e8%80%83"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >参考</a>
+            </li>
+          </ul>
+  
               
             </li></ul>
       </div>
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/rust/expression%E5%BC%8F-and-statement%E6%96%87/"
     
   >Expression(式) and Statement(文)
     </a>
-  
-    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
-              <a
-                href="#expression--%e5%bc%8f"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >Expression(式)</a>
-            </li>
-          <li>
-              <a
-                href="#statement--%e6%96%87"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >Statement(文)</a>
-            </li>
-          <li>
-              <a
-                href="#%e3%82%bb%e3%83%9f%e3%82%b3%e3%83%ad%e3%83%b3"
-                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
-              >セミコロン</a>
-            </li>
-          </ul>
-  
               
             </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
@@ -393,7 +394,7 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
     
   >Anki
     </a></li>
-          <li class=""><a
+          <li class="open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
@@ -489,9 +490,9 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
   >tab-bar-mode
     </a>
               
-            </li><li class="hx-flex hx-flex-col "><a
+            </li><li class="hx-flex hx-flex-col open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/"
     
   >お手軽Bookmark
@@ -499,9 +500,9 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
               
             </li></ul>
       </div></li>
-          <li class="open"><a
+          <li class=""><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/rust/expression%E5%BC%8F-and-statement%E6%96%87/"
     
   >Expression(式) and Statement(文)
@@ -543,15 +544,7 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
 <nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
     <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">On this page</p><ul>
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#expression--%e5%bc%8f">Expression(式)
-        </a>
-      </li>
-      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#statement--%e6%96%87">Statement(文)
-        </a>
-      </li>
-      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
-        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e3%82%bb%e3%83%9f%e3%82%b3%e3%83%ad%e3%83%b3">セミコロン
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8f%82%e8%80%83">参考
         </a>
       </li></ul>
       <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
@@ -572,46 +565,59 @@ fn example() { let x = 5; // これは文。セミコロンが付いているた
   <div class="hx-mt-1.5 hx-flex hx-items-center hx-gap-1 hx-overflow-hidden hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 contrast-more:hx-text-current">
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="/docs/">Docs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">Expression(式) and Statement(文)</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
+          <a href="/docs/emacs/">Emacs</a>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">お手軽Bookmark</div>
   </div>
 
         <div class="content">
-          <h1>Expression(式) and Statement(文)</h1>
-          <h2>Expression(式)<span class="hx-absolute -hx-mt-20" id="expression--式"></span>
-    <a href="#expression--%e5%bc%8f" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>値を生成する構文要素。 <code>1 + 2</code> , <code>if true {1} else {2}</code> など。
-(Rustのifはif文でなく、if式)</p>
-<h2>Statement(文)<span class="hx-absolute -hx-mt-20" id="statement--文"></span>
-    <a href="#statement--%e6%96%87" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>実行のみで値を変えさない構文要素。 <code>let x = 5;</code> など。</p>
-<h2>セミコロン<span class="hx-absolute -hx-mt-20" id="セミコロン"></span>
-    <a href="#%e3%82%bb%e3%83%9f%e3%82%b3%e3%83%ad%e3%83%b3" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Expression(式)の最後にセミコロン(;)を付けると、その式はStatement(文)に変わり
-値を返さなくなる。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">example</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// これは文。セミコロンが付いているため、値を返さない
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// このブロック全体は式。最終行にセミコロンがないため5が返る
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// セミコロンがあるため、zには()（ユニット）が代入される
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
+          <h1>お手軽Bookmark</h1>
+          <p>とりあえず <code>consult-bookmark</code> を既存のbookmark-jumpコマンド(<code>C-x r b</code>)と置き換えておけばOK。
+<code>consult-bookmark</code> からブックマークの一覧表示も登録もどちらも出来る。</p>
+<p>また、 <code>consult-buffer</code> で <code>m SPC</code> を入力してもブックマーク一覧になる。</p>
+<p>登録したブックマークを編集したいときは、 <code>M-x edit-bookmarks</code> で <strong>Bookmark List</strong> バッファが表示される。
+バッファ内で <code>?</code> を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">コマンド</th>
+          <th style="text-align: left">説明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">RET</td>
+          <td style="text-align: left">ブックマークに移動。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">o</td>
+          <td style="text-align: left">リストを残しつつ別ウィンドウでブックマークに移動。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">r</td>
+          <td style="text-align: left">ブックマークの名前を変更</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">d</td>
+          <td style="text-align: left">削除マークを付ける。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">x</td>
+          <td style="text-align: left">削除マークされたブックマークを削除。</td>
+      </tr>
+  </tbody>
+</table>
+<h2>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
+    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><a href="https://arialdomartini.github.io/emacs-bookmarks" target="_blank" rel="noopener">Emacs: Bookmarks</a></p>
 
         </div>
         <div class="hx-mt-16"></div>
         <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/anki/anki/"
-        title="Anki"
+        href="/docs/emacs/20241020210719-tab_bar_mode/"
+        title="tab-bar-mode"
         class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Anki</a></div>
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>tab-bar-mode</a></div>
         
       </main>
     </article>
