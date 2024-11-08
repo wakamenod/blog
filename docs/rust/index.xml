@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWAWAWAWA – Rust</title>
-    <link>https://awawawa.wakamenod.com/tags/rust/</link>
+    <link>https://awawawa.wakamenod.com/docs/rust/</link>
     <description>Recent content in Rust on AWAWAWAWA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://awawawa.wakamenod.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://awawawa.wakamenod.com/docs/rust/index.xml" rel="self" type="application/rss+xml" />
     
     
       
