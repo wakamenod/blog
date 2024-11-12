@@ -1,0 +1,40 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWAWAWAWA – JS</title>
+    <link>http://localhost:1313/tags/js/</link>
+    <description>Recent content in JS on AWAWAWAWA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="http://localhost:1313/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Emacs Setup</title>
+      <link>http://localhost:1313/docs/js/emacs-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/js/emacs-setup/</guid>
+      <description>
+        
+        
+        &lt;p&gt;新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが
+久し振りにソースを開いたらLSPが動かなくて困った。以前は &lt;code&gt;web-mode&lt;/code&gt; をlsp-modeで起動してたはずなのだけど
+新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?&lt;/p&gt;
+&lt;p&gt;とりあえず、Eglotで &lt;code&gt;typescript-language-server&lt;/code&gt; を起動するように設定し難を逃れる。&lt;/p&gt;
+&lt;h2&gt;参考&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;参考&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%82%e8%80%83&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Setting Up TypeScript and Eslint With Eglot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp;amp; more&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -16,6 +16,8 @@
   </url><url>
     <loc>http://localhost:1313/tags/anki/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/anki/</loc>
+  </url><url>
     <loc>http://localhost:1313/docs/anki/anki/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
@@ -26,6 +28,8 @@
   </url><url>
     <loc>http://localhost:1313/docs/emacs/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/js/emacs-setup/</loc>
+  </url><url>
     <loc>http://localhost:1313/docs/rust/expression%E5%BC%8F-and-statement%E6%96%87/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/emacs/fifteen-ways-to-use-embark-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0/</loc>
@@ -33,6 +37,8 @@
     <loc>http://localhost:1313/docs/emacs/go%E9%96%8B%E7%99%BA%E5%90%91%E3%81%91%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/emacs/20241022120540-gpg_gnupg/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/js/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/</loc>
   </url><url>
@@ -45,6 +51,8 @@
     <loc>http://localhost:1313/tags/reference/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/rust/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/rust/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/emacs/rustic-mode-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</loc>
   </url><url>

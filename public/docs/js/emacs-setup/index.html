@@ -11,75 +11,44 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>お手軽Bookmark – AWAWAWAWA</title>
-  <meta name="description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
-また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
-登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
-コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks" />
+  <title>Emacs Setup – AWAWAWAWA</title>
+  <meta name="description" content="新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが 久し振りにソースを開いたらLSPが動かなくて困った。以前は web-mode をlsp-modeで起動してたはずなのだけど 新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?
+とりあえず、Eglotで typescript-language-server を起動するように設定し難を逃れる。
+参考 Setting Up TypeScript and Eslint With Eglot Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp; more " />
 
   
-    <link rel="canonical" href="http://localhost:1313/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/" itemprop="url" />
+    <link rel="canonical" href="http://localhost:1313/docs/js/emacs-setup/" itemprop="url" />
   
 
   
 
-<meta property="og:title" content="お手軽Bookmark" />
-<meta property="og:description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。
-consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
-また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
-登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。
-バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
-
-  
-      
-          コマンド
-          説明
-      
-  
-  
-      
-          RET
-          ブックマークに移動。
-      
-      
-          o
-          リストを残しつつ別ウィンドウでブックマークに移動。
-      
-      
-          r
-          ブックマークの名前を変更
-      
-      
-          d
-          削除マークを付ける。
-      
-      
-          x
-          削除マークされたブックマークを削除。
-      
-  
-
+<meta property="og:title" content="Emacs Setup" />
+<meta property="og:description" content="新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが
+久し振りにソースを開いたらLSPが動かなくて困った。以前は web-mode をlsp-modeで起動してたはずなのだけど
+新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?
+とりあえず、Eglotで typescript-language-server を起動するように設定し難を逃れる。
 参考
-    Emacs: Bookmarks" />
+    
+Setting Up TypeScript and Eslint With Eglot
+Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp; more
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/js/emacs-setup/" /><meta property="article:section" content="docs" />
 
 
 
   
-  <meta itemprop="name" content="お手軽Bookmark">
-  <meta itemprop="description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
-また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
-登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
-コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks">
-  <meta itemprop="wordCount" content="38">
-  <meta itemprop="keywords" content="Emacs,Reference">
+  <meta itemprop="name" content="Emacs Setup">
+  <meta itemprop="description" content="新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが 久し振りにソースを開いたらLSPが動かなくて困った。以前は web-mode をlsp-modeで起動してたはずなのだけど 新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?
+とりあえず、Eglotで typescript-language-server を起動するように設定し難を逃れる。
+参考 Setting Up TypeScript and Eslint With Eglot Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp; more ">
+  <meta itemprop="wordCount" content="29">
+  <meta itemprop="keywords" content="JS,Reference">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="お手軽Bookmark">
-  <meta name="twitter:description" content="とりあえず consult-bookmark を既存のbookmark-jumpコマンド(C-x r b)と置き換えておけばOK。 consult-bookmark からブックマークの一覧表示も登録もどちらも出来る。
-また、 consult-buffer で m SPC を入力してもブックマーク一覧になる。
-登録したブックマークを編集したいときは、 M-x edit-bookmarks で Bookmark List バッファが表示される。 バッファ内で ? を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。
-コマンド 説明 RET ブックマークに移動。 o リストを残しつつ別ウィンドウでブックマークに移動。 r ブックマークの名前を変更 d 削除マークを付ける。 x 削除マークされたブックマークを削除。 参考 Emacs: Bookmarks">
+  <meta name="twitter:title" content="Emacs Setup">
+  <meta name="twitter:description" content="新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが 久し振りにソースを開いたらLSPが動かなくて困った。以前は web-mode をlsp-modeで起動してたはずなのだけど 新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?
+とりあえず、Eglotで typescript-language-server を起動するように設定し難を逃れる。
+参考 Setting Up TypeScript and Eslint With Eglot Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp; more ">
 
     <link href="/css/compiled/main.css" rel="stylesheet" />
 
@@ -231,7 +200,7 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
               
             </li></ul>
       </div>
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
@@ -328,12 +297,31 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
   >tab-bar-mode
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/"
     
   >お手軽Bookmark
+    </a>
+              
+            </li></ul>
+      </div>
+            </li><li class="hx-flex hx-flex-col open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/js/"
+    
+  >JS
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx-h-[18px] hx-min-w-[18px] hx-rounded-sm hx-p-0.5 hover:hx-bg-gray-800/5 dark:hover:hx-bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx-origin-center hx-transition-transform rtl:-hx-rotate-180"></path></svg></span>
+    </a>
+              <div class="ltr:hx-pr-0 hx-overflow-hidden">
+        <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+    href="/docs/js/emacs-setup/"
+    
+  >Emacs Setup
     </a>
   
     <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
@@ -347,14 +335,6 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
               
             </li></ul>
       </div>
-            </li><li class="hx-flex hx-flex-col "><a
-    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
-    href="/docs/js/emacs-setup/"
-    
-  >Emacs Setup
-    </a>
-              
             </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
@@ -443,7 +423,7 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
               
             </li></ul>
       </div></li>
-          <li class="open"><a
+          <li class=""><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
@@ -539,9 +519,9 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
   >tab-bar-mode
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/%E3%81%8A%E6%89%8B%E8%BB%BDbookmark/"
     
   >お手軽Bookmark
@@ -549,13 +529,24 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
               
             </li></ul>
       </div></li>
-          <li class=""><a
+          <li class="open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/js/"
+    
+  >JS
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx-h-[18px] hx-min-w-[18px] hx-rounded-sm hx-p-0.5 hover:hx-bg-gray-800/5 dark:hover:hx-bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx-origin-center hx-transition-transform rtl:-hx-rotate-180"></path></svg></span>
+    </a><div class="ltr:hx-pr-0 hx-overflow-hidden">
+        <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/js/emacs-setup/"
     
   >Emacs Setup
-    </a></li>
+    </a>
+              
+            </li></ul>
+      </div></li>
           <li class=""><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
@@ -642,57 +633,25 @@ consult-bookmark からブックマークの一覧表示も登録もどちらも
           <a href="/docs/">Docs</a>
         </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
-          <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">お手軽Bookmark</div>
+          <a href="/docs/js/">JS</a>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">Emacs Setup</div>
   </div>
 
         <div class="content">
-          <h1>お手軽Bookmark</h1>
-          <p>とりあえず <code>consult-bookmark</code> を既存のbookmark-jumpコマンド(<code>C-x r b</code>)と置き換えておけばOK。
-<code>consult-bookmark</code> からブックマークの一覧表示も登録もどちらも出来る。</p>
-<p>また、 <code>consult-buffer</code> で <code>m SPC</code> を入力してもブックマーク一覧になる。</p>
-<p>登録したブックマークを編集したいときは、 <code>M-x edit-bookmarks</code> で <strong>Bookmark List</strong> バッファが表示される。
-バッファ内で <code>?</code> を入力すると操作コマンドが確認できる。以下、よく使いそうなやつ。</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">コマンド</th>
-          <th style="text-align: left">説明</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">RET</td>
-          <td style="text-align: left">ブックマークに移動。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">o</td>
-          <td style="text-align: left">リストを残しつつ別ウィンドウでブックマークに移動。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">r</td>
-          <td style="text-align: left">ブックマークの名前を変更</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">d</td>
-          <td style="text-align: left">削除マークを付ける。</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">x</td>
-          <td style="text-align: left">削除マークされたブックマークを削除。</td>
-      </tr>
-  </tbody>
-</table>
+          <h1>Emacs Setup</h1>
+          <p>新しいinit.elに切り替えてから、しばらくtypescriptを触る機会が無かったが
+久し振りにソースを開いたらLSPが動かなくて困った。以前は <code>web-mode</code> をlsp-modeで起動してたはずなのだけど
+新しい環境だと動かなくなってた。Emacsのバージョンが上ったせい?</p>
+<p>とりあえず、Eglotで <code>typescript-language-server</code> を起動するように設定し難を逃れる。</p>
 <h2>参考<span class="hx-absolute -hx-mt-20" id="参考"></span>
-    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><a href="https://arialdomartini.github.io/emacs-bookmarks" target="_blank" rel="noopener">Emacs: Bookmarks</a></p>
+    <a href="#%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li><a href="https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/" target="_blank" rel="noopener">Setting Up TypeScript and Eslint With Eglot</a></li>
+<li><a href="https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config" target="_blank" rel="noopener">Modern Emacs Typescript Web (React) Config with lsp-mode, treesitter, tailwind, TSX &amp; more</a></li>
+</ul>
 
         </div>
         <div class="hx-mt-16"></div>
-        <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/emacs/20241020210719-tab_bar_mode/"
-        title="tab-bar-mode"
-        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>tab-bar-mode</a></div>
+        
         
       </main>
     </article>
