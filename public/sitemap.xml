@@ -40,6 +40,8 @@
   </url><url>
     <loc>http://localhost:1313/tags/js/</loc>
   </url><url>
+    <loc>http://localhost:1313/docs/js/</loc>
+  </url><url>
     <loc>http://localhost:1313/docs/emacs/20241021144801-lsp_bridge/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/emacs/lsp-dart/</loc>
@@ -49,6 +51,10 @@
     <loc>http://localhost:1313/docs/emacs/org%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AElatex%E8%A8%AD%E5%AE%9A/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/reference/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/ruby/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/ruby/ruby-atcoder-ab%E5%95%8F%E9%A1%8C%E7%94%A8%E3%83%A1%E3%83%A2/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/rust/</loc>
   </url><url>
