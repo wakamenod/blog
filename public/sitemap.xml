@@ -54,7 +54,9 @@
   </url><url>
     <loc>http://localhost:1313/tags/ruby/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/ruby/ruby-atcoder-ab%E5%95%8F%E9%A1%8C%E7%94%A8%E3%83%A1%E3%83%A2/</loc>
+    <loc>http://localhost:1313/docs/ruby/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/ruby/ruby-atcoderab%E5%95%8F%E9%A1%8C%E7%94%A8%E3%83%A1%E3%83%A2/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/rust/</loc>
   </url><url>

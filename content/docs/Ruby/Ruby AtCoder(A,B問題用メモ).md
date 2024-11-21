@@ -57,3 +57,36 @@ i = gets.chomp[3..].to_i
 ```ruby
 puts (1..349).reject{ |x| x == 316 }
 ```
+
+
+## 配列をQueue/Stackとして扱う {#配列をqueue-stackとして扱う}
+
+-   `push`: 末尾に追加
+-   `shift`: 先頭から削除
+-   `pop`: 末尾から削除
+
+<!--listend-->
+
+```ruby
+queue = [1, 2, 3, 4, 5]
+puts queue.shift  # => 1
+queue.push(6)
+puts queue.inspect  # => [2, 3, 4, 6]
+```
+
+```ruby
+stack = [1, 2, 3, 4]
+element = stack.pop
+puts element  # => 4
+puts stack.inspect  # => [1, 2, 3]
+```
+
+
+## nilエラーを回避しながらメソッドを呼び出す {#nilエラーを回避しながらメソッドを呼び出す}
+
+`&.` (セーブナビゲーション演算子) を使う
+
+```ruby
+m = h.find_index{ |x| x > a }
+puts m&.+(2) || -1
+```
