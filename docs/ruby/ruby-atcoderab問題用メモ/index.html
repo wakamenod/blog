@@ -108,7 +108,7 @@ i = gets.chomp[3..].to_i
 文字列内の変数展開 ダブルクォート内で #{} 。シングルクォートだと展開できない。
 name = &#34;Ruby&#34; puts &#34;Hello, #{name}!&#34; # =&gt; &#34;Hello, Ruby!&#34; 文字列はchompする しないと改行文字が含まれる。
 s = gets.chomp 一時変数の省略にはthenを使う puts gets.chomp.then{ |s| s == &#39;no_no&#39; || s &gt; &#39;999&#39; ? &#39;No&#39; : &#39;Yes&#39; } 0パディングはrjust num = 42 puts num.to_s.rjust(5, &#39;0&#39;) # =&gt; &#34;00042&#34; substringは[x..y] i = gets.chomp[3..].to_i 連続した範囲(Range) (x..y) もしくは (x...y) 。ドット3つは終端を含まない(半開範囲)">
-  <meta itemprop="wordCount" content="128">
+  <meta itemprop="wordCount" content="146">
   <meta itemprop="keywords" content="Ruby,Reference">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby AtCoder(A,B問題用メモ)">
@@ -497,6 +497,10 @@ s = gets.chomp 一時変数の省略にはthenを使う puts gets.chomp.then{ |s
       <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
         <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#nil%e3%82%a8%e3%83%a9%e3%83%bc%e3%82%92%e5%9b%9e%e9%81%bf%e3%81%97%e3%81%aa%e3%81%8c%e3%82%89%e3%83%a1%e3%82%bd%e3%83%83%e3%83%89%e3%82%92%e5%91%bc%e3%81%b3%e5%87%ba%e3%81%99">nilエラーを回避しながらメソッドを呼び出す
         </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e6%bc%94%e7%ae%97%e5%ad%90">スプラット演算子
+        </a>
       </li></ul>
       <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
         <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx-transition-all hx-duration-75 hx-opacity-0 hx-text-xs hx-font-medium hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-100 contrast-more:hx-text-gray-800 contrast-more:dark:hx-text-gray-50">
@@ -688,6 +692,26 @@ s = gets.chomp 一時変数の省略にはthenを使う puts gets.chomp.then{ |s
 
   
 </div>
+<h2>スプラット演算子<span class="hx-absolute -hx-mt-20" id="スプラット演算子"></span>
+    <a href="#%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e6%bc%94%e7%ae%97%e5%ad%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+  
+
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">h</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">split</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+  <button
+    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+    title="Copy code"
+  >
+    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
+    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
+  </button>
+</div>
+
+  
+</div>
+<ul>
+<li>a, *h = &hellip; の形式で、多重代入を利用して最初の要素を a に、残りを配列 h に代入します。</li>
+<li>*h の * はスプラット演算子で、残りの全ての要素を配列として受け取ります。</li>
+</ul>
 
         </div>
         <div class="hx-mt-16"></div>
