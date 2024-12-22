@@ -11,75 +11,24 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 
-  <title>lsp-dart – AWAWAWAWA</title>
-  <meta name="description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
-以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
-(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。" />
+  <title>English – AWAWAWAWA</title>
+  <meta name="description" content="" />
 
   
-    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/emacs/lsp-dart/" itemprop="url" />
+    <link rel="canonical" href="https://awawawa.wakamenod.com/docs/english/" itemprop="url" />
   
 
   
 
-<meta property="og:title" content="lsp-dart" />
-<meta property="og:description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。
-前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず&hellip;
-以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
+<meta property="og:title" content="English" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://awawawa.wakamenod.com/docs/english/" />
 
   
-
-(leaf dart-mode
-  :ensure t
-  :init
-  (require &#39;tree-sitter)
-  (require &#39;treesit)
-  (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode)
-  :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode)))
-(leaf lsp-dart
-  :ensure t
-  :config
-  (defun wal/find-dart-flutter-sdk-dir ()
-    &#34;Find the Dart Flutter SDK directory.&#34;
-    (when-let* ((flutter-bin (executable-find &#34;flutter&#34;))
-                (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;))))
-      sdk-dir))
-  (setq lsp-dart-test-tree-on-run nil)
-  (when (string= system-type &#34;gnu/linux&#34;)
-    (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir)))
-  (when (string= system-type &#34;darwin&#34;)
-    (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;))
-  (when (string= system-type &#34;windows-nt&#34;)
-    (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;))
-  :custom
-  (lsp-dart-test-tree-on-run . nil)
-  :hook (dart-mode-hook . lsp))
-  
-    
-    
-  
-
-
-  
-
-以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://awawawa.wakamenod.com/docs/emacs/lsp-dart/" /><meta property="article:section" content="docs" />
-
-
-
-  
-  <meta itemprop="name" content="lsp-dart">
-  <meta itemprop="description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
-以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
-(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。">
-  <meta itemprop="wordCount" content="97">
-  <meta itemprop="keywords" content="Emacs,Reference">
+  <meta itemprop="name" content="English">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="lsp-dart">
-  <meta name="twitter:description" content="久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。 前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず…
-以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。
-(leaf dart-mode :ensure t :init (require &#39;tree-sitter) (require &#39;treesit) (add-hook &#39;dart-mode-hook #&#39;tree-sitter-hl-mode) :mode ((&#34;\\.dart\\&#39;&#34; . dart-mode))) (leaf lsp-dart :ensure t :config (defun wal/find-dart-flutter-sdk-dir () &#34;Find the Dart Flutter SDK directory.&#34; (when-let* ((flutter-bin (executable-find &#34;flutter&#34;)) (sdk-dir (string-trim (shell-command-to-string &#34;flutter sdk-path&#34;)))) sdk-dir)) (setq lsp-dart-test-tree-on-run nil) (when (string= system-type &#34;gnu/linux&#34;) (setq lsp-dart-flutter-sdk-dir (wal/find-dart-flutter-sdk-dir))) (when (string= system-type &#34;darwin&#34;) (setq lsp-dart-flutter-sdk-dir &#34;~/flutter&#34;)) (when (string= system-type &#34;windows-nt&#34;) (setq lsp-dart-flutter-sdk-dir &#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;)) :custom (lsp-dart-test-tree-on-run . nil) :hook (dart-mode-hook . lsp)) 以下のとおり、 dart-mode でtree-sitter-hl-modeをフックするようにした。">
+  <meta name="twitter:title" content="English">
 
     <link rel="preload" href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" as="style" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
     <link href="/css/compiled/main.min.53c9617cf9cb82685ec5af463dec3ecab7f3b4c3ad5c9cf22185fc7cf9b39519.css" rel="stylesheet" integrity="sha256-U8lhfPnLgmhexa9GPew&#43;yrfztMOtXJzyIYX8fPmzlRk=" />
@@ -234,7 +183,7 @@
               
             </li></ul>
       </div></li>
-          <li class="open"><a
+          <li class=""><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
       hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/"
@@ -274,9 +223,9 @@
   >lsp-bridge
     </a>
               
-            </li><li class="hx-flex hx-flex-col open"><a
+            </li><li class="hx-flex hx-flex-col "><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
     href="/docs/emacs/lsp-dart/"
     
   >lsp-dart
@@ -332,9 +281,9 @@
               
             </li></ul>
       </div></li>
-          <li class=""><a
+          <li class="open"><a
     class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
-      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
     href="/docs/english/"
     
   >English
@@ -466,91 +415,15 @@
   <div class="hx-mt-1.5 hx-flex hx-items-center hx-gap-1 hx-overflow-hidden hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 contrast-more:hx-text-current">
         <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
           <a href="">Docs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
-          <a href="/docs/emacs/">Emacs</a>
-        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">lsp-dart</div>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">English</div>
   </div>
 
         <div class="content">
-          <h1>lsp-dart</h1>
-          <p>久し振りにFlutterプロジェクトを開いたら、動かなくなってて困った。
-前回からEmacsの設定を大幅な見直しがあったので、それが要因だと思うけど、結局根本的な原因はよく分からず&hellip;</p>
-<p>以前はlsp-dartを入れるだけで大体動いたと記憶してるが、今回はシンタックスハイライトが効かなかったり、LSPが起動しなくなったり嵌ってしまった。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">leaf</span> <span class="n">dart</span><span class="o">-</span><span class="n">mode</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">ensure</span> <span class="n">t</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">init</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">require</span> <span class="s1">&#39;tree-sitter)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">require</span> <span class="s1">&#39;treesit)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">hook</span> <span class="s1">&#39;dart-mode-hook #&#39;</span><span class="n">tree</span><span class="o">-</span><span class="n">sitter</span><span class="o">-</span><span class="n">hl</span><span class="o">-</span><span class="n">mode</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">mode</span> <span class="p">((</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">.dart</span><span class="se">\\</span><span class="s2">&#39;&#34;</span> <span class="p">.</span> <span class="n">dart</span><span class="o">-</span><span class="n">mode</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">leaf</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">ensure</span> <span class="n">t</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">config</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">defun</span> <span class="n">wal</span><span class="o">/</span><span class="n">find</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Find the Dart Flutter SDK directory.&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">when</span><span class="o">-</span><span class="n">let</span><span class="o">*</span> <span class="p">((</span><span class="n">flutter</span><span class="o">-</span><span class="n">bin</span> <span class="p">(</span><span class="n">executable</span><span class="o">-</span><span class="n">find</span> <span class="s2">&#34;flutter&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">trim</span> <span class="p">(</span><span class="n">shell</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">string</span> <span class="s2">&#34;flutter sdk-path&#34;</span><span class="p">))))</span>
-</span></span><span class="line"><span class="cl">      <span class="n">sdk</span><span class="o">-</span><span class="n">dir</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">tree</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">run</span> <span class="n">nil</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;gnu/linux&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="p">(</span><span class="n">wal</span><span class="o">/</span><span class="n">find</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;darwin&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="s2">&#34;~/flutter&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">string</span><span class="o">=</span> <span class="n">system</span><span class="o">-</span><span class="n">type</span> <span class="s2">&#34;windows-nt&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">setq</span> <span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">flutter</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">dir</span> <span class="s2">&#34;C:/Users/wtnbjn/scoop/apps/flutter/current&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">custom</span>
-</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="n">lsp</span><span class="o">-</span><span class="n">dart</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">tree</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">run</span> <span class="p">.</span> <span class="n">nil</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span><span class="n">hook</span> <span class="p">(</span><span class="n">dart</span><span class="o">-</span><span class="n">mode</span><span class="o">-</span><span class="n">hook</span> <span class="p">.</span> <span class="n">lsp</span><span class="p">))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p>以下のとおり、 <code>dart-mode</code> でtree-sitter-hl-modeをフックするようにした。</p>
-<div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-  
-
-<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="nb">:init</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;treesit</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;dart-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">:mode</span> <span class="p">((</span><span class="s">&#34;\\.dart\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">dart-mode</span><span class="p">)))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
-  <button
-    class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
-    title="Copy code"
-  >
-    <div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4"></div>
-    <div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4"></div>
-  </button>
-</div>
-
-  
-</div>
-<p>こんなの前までやらなくてもハイライトされてたと思うんだけど、謎。</p>
-<p><a href="https://github.com/50ways2sayhard/dart-ts-mode" target="_blank" rel="noopener">dar-ts-mode</a> を用意してくれてる方がいて、セットアップすると <code>ts-mode</code> になるのでハイライトされるが、
-今度はlsp-dartでlspが起動しなくなってしまう。 多分、lsp-dartがまだdart-mode前提になってる。</p>
-
+          <h1>English</h1>
+          
         </div>
         <div class="hx-mt-16"></div>
-        <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
-        href="/docs/emacs/20241021144801-lsp_bridge/"
-        title="lsp-bridge"
-        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
-      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>lsp-bridge</a><a
-        href="/docs/emacs/org-download/"
-        title="org-download"
-        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
-      >org-download<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
+        
         
       </main>
     </article>
